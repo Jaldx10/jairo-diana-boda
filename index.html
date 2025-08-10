@@ -240,32 +240,40 @@
   </section>
 
   <!-- 3. NUESTRA CANCIÓN (audio autoplay sin botón) -->
-  <section class="audio-section fade delay-2" aria-label="Nuestra canción">
-    <h3 class="audio-title">Nuestra canción</h3>
-    <div class="audio-player" aria-hidden="false">
-      <audio id="audio" src="https://github.com/Jaldx10/jairo-diana-boda/raw/refs/heads/main/Bruno-Major-Nothing-Lyric-Chord.MP3" preload="auto" playsinline muted loop controls></audio>
-    </div>
-  </section>
+ <section class="audio-section fade delay-2" aria-label="Nuestra canción">
+  <h3 class="audio-title">Nuestra canción</h3>
+  <div class="audio-player" aria-hidden="false">
+    <audio id="audio" src="https://github.com/Jaldx10/jairo-diana-boda/raw/refs/heads/main/Bruno-Major-Nothing-Lyric-Chord.MP3" preload="auto" playsinline muted loop></audio>
+    <button id="enableAudioBtn" style="margin-top:8px; padding:6px 12px; font-size:1rem; cursor:pointer; display:none;">Activar sonido</button>
+  </div>
 
   <script>
     const audio = document.getElementById('audio');
+    const enableBtn = document.getElementById('enableAudioBtn');
 
     window.addEventListener('load', () => {
-      audio.play()
-      .then(() => {
-        audio.muted = false;
-      })
-      .catch(() => {
-        // Si no se reproduce automáticamente, espera interacción
-        function enableAudio() {
-          audio.muted = false;
-          audio.play();
-          window.removeEventListener('click', enableAudio);
-        }
-        window.addEventListener('click', enableAudio);
+      // Intentamos reproducir silenciado (muted)
+      audio.play().catch(() => {
+        // Si falla, mostramos botón para activar sonido
+        enableBtn.style.display = 'inline-block';
       });
     });
+
+    enableBtn.addEventListener('click', () => {
+      // Quitamos mute y reproducimos con sonido al hacer clic
+      audio.muted = false;
+      audio.play();
+      enableBtn.style.display = 'none';
+    });
+
+    // Opcional: si el audio se reproduce automáticamente sin problema, quitamos el botón
+    audio.onplay = () => {
+      if (!audio.muted) {
+        enableBtn.style.display = 'none';
+      }
+    };
   </script>
+</section>
 
   <!-- 4. NUESTROS PADRES reorganizado -->
   <section class="parents fade delay-3" aria-label="Nuestros padres">
