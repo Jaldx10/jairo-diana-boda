@@ -243,31 +243,29 @@
   <section class="audio-section fade delay-2" aria-label="Nuestra canción">
     <h3 class="audio-title">Nuestra canción</h3>
     <div class="audio-player" aria-hidden="false">
-      <audio id="audio" src="https://github.com/Jaldx10/jairo-diana-boda/raw/refs/heads/main/Bruno-Major-Nothing-Lyric-Chord.MP3" preload="auto" playsinline muted loop></audio>
-
-<script>
-  const audio = document.getElementById('audio');
-
-  // Intentar reproducir automáticamente
-  window.addEventListener('load', () => {
-    audio.play()
-    .then(() => {
-      // Quitar muted si se reproduce bien
-      audio.muted = false;
-    })
-    .catch(() => {
-      // Si no pudo reproducir, mostrar mensaje o pedir interacción
-      // Aquí simplemente quitamos muted cuando el usuario haga clic en la página
-      function enableAudio() {
-        audio.muted = false;
-        audio.play();
-        window.removeEventListener('click', enableAudio);
-      }
-      window.addEventListener('click', enableAudio);
-    });
-  });
-</script>
+      <audio id="audio" src="https://github.com/Jaldx10/jairo-diana-boda/raw/refs/heads/main/Bruno-Major-Nothing-Lyric-Chord.MP3" preload="auto" playsinline muted loop controls></audio>
+    </div>
   </section>
+
+  <script>
+    const audio = document.getElementById('audio');
+
+    window.addEventListener('load', () => {
+      audio.play()
+      .then(() => {
+        audio.muted = false;
+      })
+      .catch(() => {
+        // Si no se reproduce automáticamente, espera interacción
+        function enableAudio() {
+          audio.muted = false;
+          audio.play();
+          window.removeEventListener('click', enableAudio);
+        }
+        window.addEventListener('click', enableAudio);
+      });
+    });
+  </script>
 
   <!-- 4. NUESTROS PADRES reorganizado -->
   <section class="parents fade delay-3" aria-label="Nuestros padres">
