@@ -2,10 +2,10 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Invitación de Boda - Jairo & Diana</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
   <header class="hero">
@@ -20,25 +20,38 @@
     <h2>Detalles del Evento</h2>
     <p><strong>Fecha:</strong> 6 de diciembre de 2025</p>
     <p><strong>Hora:</strong> 5:00 PM</p>
-    <p><strong>Lugar:</strong> <a href="https://maps.google.com/?q=San+Salvador+El+Salvador" target="_blank">San Salvador, El Salvador</a></p>
+    <p>
+      <strong>Lugar:</strong>
+      <a href="https://maps.google.com/?q=San+Salvador+El+Salvador" target="_blank">San Salvador, El Salvador</a>
+    </p>
   </section>
+
+  <!-- Mensaje personalizado basado en URL -->
+  <section id="mensajePersonalizado" style="margin: 20px auto; max-width: 600px; font-weight: bold; color: #273526; font-size: 1.2em;"></section>
 
   <section class="rsvp">
     <h2>Confirmar Asistencia</h2>
     <p>Por favor, confirma si podrás acompañarnos en nuestro gran día.</p>
-    <iframe src="ENLACE_DE_TU_FORMULARIO_DE_GOOGLE" width="100%" height="500" frameborder="0">Cargando…</iframe>
+    <iframe
+      src="ENLACE_DE_TU_FORMULARIO_DE_GOOGLE"
+      width="100%"
+      height="500"
+      frameborder="0"
+      >Cargando…</iframe
+    >
   </section>
 
   <footer>
     <div class="floral-bottom"></div>
-    <p>Con cariño,<br> Jairo & Diana</p>
+    <p>Con cariño,<br />Jairo & Diana</p>
   </footer>
 
   <script>
+    // Countdown
     const countdown = document.getElementById("countdown");
     const eventDate = new Date("Dec 6, 2025 17:00:00").getTime();
 
-    const timer = setInterval(function() {
+    const timer = setInterval(function () {
       const now = new Date().getTime();
       const distance = eventDate - now;
 
@@ -47,45 +60,47 @@
         countdown.innerHTML = "¡El gran día ha llegado!";
       } else {
         const dias = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const horas = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const horas = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
         const minutos = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         countdown.innerHTML = `${dias} días ${horas} horas ${minutos} minutos`;
       }
     }, 1000);
+
+    // Mostrar mensaje personalizado basado en parámetros URL
+    function obtenerParametrosURL() {
+      const params = new URLSearchParams(window.location.search);
+      return {
+        nombre: params.get("nombre") || "",
+        adultos: parseInt(params.get("adultos")) || 0,
+        ninos: parseInt(params.get("ninos")) || 0,
+      };
+    }
+
+    function mostrarMensajePersonalizado() {
+      const { nombre, adultos, ninos } = obtenerParametrosURL();
+      const contenedor = document.getElementById("mensajePersonalizado");
+
+      if (nombre && (adultos > 0 || ninos >= 0)) {
+        const textoAdultos = adultos === 1 ? "adulto" : "adultos";
+        const textoNinos = ninos === 1 ? "niño" : "niños";
+
+        let mensaje = `Hola <strong>${nombre}</strong>, estás invitado con `;
+        if (adultos > 0) mensaje += `${adultos} ${textoAdultos}`;
+        if (ninos > 0) {
+          if (adultos > 0) mensaje += ` y `;
+          mensaje += `${ninos} ${textoNinos}`;
+        }
+        mensaje += `.`;
+
+        contenedor.innerHTML = mensaje;
+      } else {
+        contenedor.textContent = ""; // No muestra nada si no hay parámetros
+      }
+    }
+
+    mostrarMensajePersonalizado();
   </script>
 </body>
 </html>
-
-<section class="confirmacion-personalizada">
-  <h2>Confirma tu asistencia</h2>
-  <form id="confirmacionForm">
-    <label for="nombre">Nombre:</label><br/>
-    <input type="text" id="nombre" name="nombre" required/><br/><br/>
-    
-    <label for="adultos">Cantidad de adultos:</label><br/>
-    <input type="number" id="adultos" name="adultos" min="0" value="1" required/><br/><br/>
-    
-    <label for="ninos">Cantidad de niños:</label><br/>
-    <input type="number" id="ninos" name="ninos" min="0" value="0" required/><br/><br/>
-    
-    <button type="submit">Confirmar asistencia</button>
-  </form>
-  <div id="mensajeConfirmacion" style="margin-top:20px; font-weight:bold;"></div>
-</section>
-
-<script>
-  const form = document.getElementById('confirmacionForm');
-  const mensaje = document.getElementById('mensajeConfirmacion');
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const nombre = form.nombre.value.trim();
-    const adultos = form.adultos.value;
-    const ninos = form.ninos.value;
-
-    if(nombre && adultos >= 0 && ninos >= 0) {
-      mensaje.textContent = `¡Gracias ${nombre}! Hemos registrado tu asistencia con ${adultos} adulto(s) y ${ninos} niño(s).`;
-      form.reset();
-    }
-  });
-</script>
