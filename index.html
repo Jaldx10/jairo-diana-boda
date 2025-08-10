@@ -15,7 +15,6 @@
       --blanco-translucido: rgba(255, 255, 255, 0.45);
     }
 
-    /* Reset y base */
     * {
       box-sizing: border-box;
     }
@@ -36,7 +35,6 @@
       padding: 1rem;
     }
 
-    /* Fondo con acuarela de hojas y flores */
     body::before {
       content: '';
       position: fixed;
@@ -63,42 +61,35 @@
       text-align: center;
     }
 
-    /* Sección 1 */
+    /* Sección 1: Monograma inline */
     .seccion-1 {
-      position: relative;
-      height: 280px;
-      width: 280px;
-      margin: 0 auto;
-      background: var(--verde-oliva);
-      border-radius: 50%;
       display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      font-family: 'Great Vibes', cursive;
+      font-size: 4.5rem;
+      color: var(--verde-oliva);
+      font-weight: 700;
+      user-select: none;
+    }
+
+    .seccion-1 .monograma {
+      border: 3px solid var(--verde-claro);
+      padding: 0.25rem 0.9rem;
+      border-radius: 50%;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
+      width: 80px;
+      height: 80px;
       box-shadow:
-        inset 0 0 60px var(--verde-claro),
-        0 0 30px rgba(0,0,0,0.18);
+        0 0 8px var(--verde-claro);
+      transition: box-shadow 0.3s ease;
     }
 
-    .seccion-1::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 50%;
-      background:
-        radial-gradient(circle at 25% 25%, var(--verde-claro) 18%, transparent 72%),
-        radial-gradient(circle at 75% 75%, var(--verde-claro) 22%, transparent 62%);
-      opacity: 0.25;
-      z-index: 0;
-    }
-
-    .iniciales {
-      font-family: 'Great Vibes', cursive;
-      font-size: 7.5rem;
-      color: var(--crema);
-      user-select: none;
-      z-index: 1;
-      text-shadow:
-        0 2px 4px rgba(0,0,0,0.25);
+    .seccion-1 .monograma:hover {
+      box-shadow: 0 0 16px var(--verde-claro);
     }
 
     /* Sección 2: Foto */
@@ -109,6 +100,21 @@
       border-radius: 1rem;
       box-shadow: 0 12px 30px rgba(0,0,0,0.1);
       user-select: none;
+    }
+
+    /* Sección 2.5: Audio */
+    .seccion-audio {
+      margin-top: -1rem;
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: center;
+    }
+    .seccion-audio audio {
+      outline: none;
+      width: 100%;
+      max-width: 400px;
+      border-radius: 1rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     }
 
     /* Sección 3: Texto padres */
@@ -184,6 +190,82 @@
       user-select: none;
     }
 
+    /* Countdown */
+    .countdown {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--verde-oliva);
+      margin: 0 auto;
+      background: var(--crema);
+      width: fit-content;
+      padding: 0.75rem 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      user-select: none;
+    }
+
+    /* Sección Ubicación */
+    .seccion-ubicacion {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .ubicacion-item {
+      flex: 1 1 320px;
+      background: white;
+      border-radius: 1rem;
+      padding: 1rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+      user-select: none;
+    }
+    .ubicacion-item h3 {
+      color: var(--verde-claro);
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+    }
+    .ubicacion-item iframe {
+      border-radius: 1rem;
+      width: 100%;
+      height: 240px;
+      border: none;
+      pointer-events: auto;
+    }
+
+    /* Sección Agenda */
+    .seccion-agenda {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 1rem;
+      padding: 2rem 2.5rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+      user-select: none;
+    }
+    .seccion-agenda h2 {
+      color: var(--verde-claro);
+      margin-bottom: 1rem;
+      user-select: none;
+    }
+    .seccion-agenda ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 1.15rem;
+      color: var(--verde-oliva);
+      line-height: 1.7;
+      font-weight: 600;
+    }
+    .seccion-agenda ul li {
+      padding: 0.4rem 0;
+      border-bottom: 1px solid #ddd;
+    }
+    .seccion-agenda ul li:last-child {
+      border-bottom: none;
+    }
+
     /* Mensaje personalizado */
     #mensajePersonalizado {
       max-width: 600px;
@@ -203,12 +285,14 @@
       }
 
       .seccion-1 {
-        width: 200px;
-        height: 200px;
+        font-size: 3.5rem;
+        gap: 0.5rem;
       }
 
-      .iniciales {
-        font-size: 5.5rem;
+      .seccion-1 .monograma {
+        width: 60px;
+        height: 60px;
+        border-width: 2px;
       }
 
       .seccion-3 {
@@ -228,17 +312,31 @@
       .seccion-4 .titulo-grande {
         font-size: 3.2rem;
       }
+
+      .seccion-ubicacion {
+        flex-direction: column;
+      }
+
+      .ubicacion-item {
+        flex-basis: 100%;
+      }
+
+      .seccion-agenda {
+        padding: 1.5rem 1.5rem;
+      }
     }
   </style>
 </head>
 <body>
   <main role="main" aria-label="Invitación de boda de Jairo y Diana">
-    <!-- Sección 1 -->
-    <section class="seccion-1" aria-label="Iniciales de J y D">
-      <div class="iniciales">J &amp; D</div>
+
+    <!-- Sección 1: Monograma en línea -->
+    <section class="seccion-1" aria-label="Monograma J y D">
+      <div class="monograma" aria-hidden="true">J &amp; D</div>
+      <div style="font-size: 1.8rem; font-weight: 600; align-self: center; user-select:none;">Jairo &amp; Diana</div>
     </section>
 
-    <!-- Sección 2 -->
+    <!-- Sección 2: Foto -->
     <section class="seccion-2" aria-label="Fotografía de los novios">
       <img
         src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=800&q=80"
@@ -248,7 +346,21 @@
       />
     </section>
 
-    <!-- Sección 3 -->
+    <!-- Sección 2.5: Audio -->
+    <section class="seccion-audio" aria-label="Audio de bienvenida">
+      <audio
+        src="https://cdn.pixabay.com/download/audio/2021/09/27/audio_f50e2ff6d7.mp3?filename=soft-music-ambient-6242.mp3"
+        autoplay
+        loop
+        muted
+        controls
+        preload="auto"
+      >
+        Tu navegador no soporta el elemento de audio.
+      </audio>
+    </section>
+
+    <!-- Sección 3: Padres -->
     <section class="seccion-3" aria-label="Información de los padres">
       <div class="texto">
         <h1>Jairo y Diana</h1>
@@ -266,11 +378,51 @@
       </div>
     </section>
 
-    <!-- Sección 4 -->
+    <!-- Sección 4: Invitación -->
     <section class="seccion-4" aria-label="Invitación a la boda">
       <h2>Tenemos el agrado de invitarle a</h2>
       <div class="titulo-grande">Nuestra boda</div>
       <div class="fecha">Sábado 06 de diciembre</div>
+    </section>
+
+    <!-- Countdown -->
+    <section class="countdown" aria-label="Cuenta regresiva para la boda" role="timer" id="countdown"></section>
+
+    <!-- Sección Ubicación -->
+    <section class="seccion-ubicacion" aria-label="Ubicación de la iglesia y recepción">
+      <div class="ubicacion-item">
+        <h3>Iglesia</h3>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.998233822681!2d-89.20374578569777!3d13.692164990346933!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f63399fdb00e4c3%3A0xb302179fbf0e8a12!2sParroquia%20San%20Miguel%20Arc%C3%A1ngel%20-%20Iglesia%20San%20Miguel%20Arc%C3%A1ngel!5e0!3m2!1ses-419!2ssv!4v1691567891234!5m2!1ses-419!2ssv"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Ubicación de la iglesia"
+        ></iframe>
+      </div>
+      <div class="ubicacion-item">
+        <h3>Recepción</h3>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.750242816383!2d-89.18943988569823!3d13.70119659010592!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f633aafee0a9c39%3A0x4f0c1c15b6e35ca7!2sCentro%20de%20Convenciones%20San%20Salvador!5e0!3m2!1ses-419!2ssv!4v1691567994567!5m2!1ses-419!2ssv"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Ubicación de la recepción"
+        ></iframe>
+      </div>
+    </section>
+
+    <!-- Sección Agenda -->
+    <section class="seccion-agenda" aria-label="Agenda del evento">
+      <h2>Agenda del Evento</h2>
+      <ul>
+        <li><strong>4:00 PM</strong> - Recepción de invitados</li>
+        <li><strong>5:00 PM</strong> - Ceremonia religiosa</li>
+        <li><strong>6:30 PM</strong> - Fotos y coctel</li>
+        <li><strong>7:30 PM</strong> - Recepción y cena</li>
+        <li><strong>9:00 PM</strong> - Baile y celebración</li>
+        <li><strong>12:00 AM</strong> - Despedida</li>
+      </ul>
     </section>
 
     <!-- Mensaje personalizado -->
@@ -280,9 +432,34 @@
       role="region"
       aria-atomic="true"
     ></section>
+
   </main>
 
   <script>
+    // Countdown
+    const countdown = document.getElementById("countdown");
+    const eventDate = new Date("Dec 6, 2025 17:00:00").getTime();
+
+    function actualizarCountdown() {
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+
+      if (distance < 0) {
+        countdown.textContent = "¡El gran día ha llegado!";
+        clearInterval(intervalo);
+      } else {
+        const dias = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const horas = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutos = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        countdown.textContent = `${dias} día${dias !== 1 ? 's' : ''} ${horas} hora${horas !== 1 ? 's' : ''} ${minutos} minuto${minutos !== 1 ? 's' : ''}`;
+      }
+    }
+
+    actualizarCountdown();
+    const intervalo = setInterval(actualizarCountdown, 1000);
+
     // Función para obtener parámetros URL
     function obtenerParametrosURL() {
       const params = new URLSearchParams(window.location.search);
