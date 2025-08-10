@@ -12,7 +12,7 @@
       --verde-oliva: #273526;
       --verde-claro: #97A97C;
       --crema: #e9f5db;
-      --blanco-translucido: rgba(255, 255, 255, 0.5);
+      --blanco-translucido: rgba(255, 255, 255, 0.45);
     }
 
     /* Reset y base */
@@ -25,7 +25,15 @@
       font-family: 'Playfair Display', serif;
       background: var(--crema);
       color: var(--verde-oliva);
-      line-height: 1.5;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 1rem;
     }
 
     /* Fondo con acuarela de hojas y flores */
@@ -36,36 +44,39 @@
       background:
         url('https://i.ibb.co/V9tPc7Y/hojas-acuarela.png') no-repeat center top,
         url('https://i.ibb.co/z4njQ31/flores-blancas.png') no-repeat center bottom;
-      background-size: contain;
+      background-size: 40% auto, 50% auto;
       opacity: 0.15;
       pointer-events: none;
       z-index: -1;
     }
 
-    /* Contenedor general */
     main {
-      max-width: 800px;
+      max-width: 720px;
       margin: 0 auto;
-      padding: 1rem 1rem 3rem;
+      background: rgba(255 255 255 / 0.85);
+      border-radius: 1rem;
+      padding: 2rem 2.5rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
       display: flex;
       flex-direction: column;
-      gap: 3rem;
+      gap: 3.5rem;
+      text-align: center;
     }
 
     /* Sección 1 */
     .seccion-1 {
       position: relative;
-      height: 300px;
+      height: 280px;
+      width: 280px;
+      margin: 0 auto;
       background: var(--verde-oliva);
       border-radius: 50%;
-      width: 300px;
-      margin: 2rem auto 0;
       display: flex;
       align-items: center;
       justify-content: center;
       box-shadow:
-        inset 0 0 50px var(--verde-claro),
-        0 0 30px rgba(0,0,0,0.2);
+        inset 0 0 60px var(--verde-claro),
+        0 0 30px rgba(0,0,0,0.18);
     }
 
     .seccion-1::before {
@@ -74,123 +85,154 @@
       inset: 0;
       border-radius: 50%;
       background:
-        radial-gradient(circle at 20% 20%, var(--verde-claro) 15%, transparent 70%),
-        radial-gradient(circle at 80% 80%, var(--verde-claro) 20%, transparent 60%);
-      opacity: 0.3;
+        radial-gradient(circle at 25% 25%, var(--verde-claro) 18%, transparent 72%),
+        radial-gradient(circle at 75% 75%, var(--verde-claro) 22%, transparent 62%);
+      opacity: 0.25;
       z-index: 0;
     }
 
     .iniciales {
       font-family: 'Great Vibes', cursive;
-      font-size: 7rem;
+      font-size: 7.5rem;
       color: var(--crema);
-      z-index: 1;
       user-select: none;
+      z-index: 1;
+      text-shadow:
+        0 2px 4px rgba(0,0,0,0.25);
     }
 
     /* Sección 2: Foto */
     .seccion-2 img {
       width: 100%;
-      max-height: 400px;
+      max-height: 420px;
       object-fit: cover;
       border-radius: 1rem;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+      user-select: none;
     }
 
     /* Sección 3: Texto padres */
     .seccion-3 {
       display: flex;
-      gap: 3rem;
+      gap: 4rem;
       justify-content: center;
-      text-align: center;
       flex-wrap: wrap;
+      text-align: center;
     }
 
     .seccion-3 .texto {
-      flex: 1 1 250px;
+      flex: 1 1 280px;
     }
 
     .seccion-3 h1 {
       font-family: 'Great Vibes', cursive;
-      font-size: 3rem;
-      margin-bottom: 0.2rem;
+      font-size: 3.2rem;
+      margin-bottom: 0.3rem;
       color: var(--verde-oliva);
+      user-select: none;
     }
 
     .seccion-3 h2 {
       font-weight: 400;
       font-style: italic;
       margin-top: 0;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.8rem;
       color: var(--verde-claro);
+      user-select: none;
     }
 
     .nombres {
       font-weight: 600;
-      font-size: 1.2rem;
-      line-height: 1.6;
+      font-size: 1.25rem;
+      line-height: 1.8;
       color: var(--verde-oliva);
+      user-select: text;
+      white-space: pre-line;
     }
 
     /* Sección 4: Invitación */
     .seccion-4 {
-      text-align: center;
       background: white;
-      padding: 2rem 1.5rem;
+      padding: 2.5rem 2rem;
       border-radius: 1rem;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-      max-width: 500px;
-      margin: 0 auto 3rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+      max-width: 520px;
+      margin: 0 auto;
     }
 
     .seccion-4 h2 {
       color: var(--verde-claro);
       font-weight: 400;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.6rem;
+      user-select: none;
+      font-size: 1.5rem;
     }
 
     .seccion-4 .titulo-grande {
       font-family: 'Great Vibes', cursive;
-      font-size: 4rem;
+      font-size: 4.2rem;
       color: var(--verde-oliva);
-      margin: 0.2rem 0 1.2rem;
+      margin: 0.3rem 0 1.5rem;
       font-style: italic;
       user-select: none;
     }
 
     .seccion-4 .fecha {
       font-weight: 600;
-      font-size: 1.3rem;
+      font-size: 1.35rem;
       color: var(--verde-oliva);
+      user-select: none;
     }
 
     /* Mensaje personalizado */
     #mensajePersonalizado {
       max-width: 600px;
-      margin: 1rem auto;
+      margin: 1.5rem auto 0;
       font-weight: 700;
       font-size: 1.3rem;
       color: var(--verde-oliva);
       text-align: center;
+      user-select: none;
     }
 
     /* Responsive */
-    @media (max-width: 600px) {
+    @media (max-width: 640px) {
+      main {
+        padding: 1.5rem 1.5rem 3rem;
+        gap: 3rem;
+      }
+
+      .seccion-1 {
+        width: 200px;
+        height: 200px;
+      }
+
+      .iniciales {
+        font-size: 5.5rem;
+      }
+
       .seccion-3 {
         flex-direction: column;
         gap: 1.5rem;
       }
 
-      .seccion-1 {
-        width: 220px;
-        height: 220px;
-        font-size: 5rem;
+      .seccion-3 .texto {
+        flex-basis: 100%;
+      }
+
+      .seccion-4 {
+        padding: 2rem 1.5rem;
+        max-width: 100%;
+      }
+
+      .seccion-4 .titulo-grande {
+        font-size: 3.2rem;
       }
     }
   </style>
 </head>
 <body>
-  <main>
+  <main role="main" aria-label="Invitación de boda de Jairo y Diana">
     <!-- Sección 1 -->
     <section class="seccion-1" aria-label="Iniciales de J y D">
       <div class="iniciales">J &amp; D</div>
@@ -198,7 +240,12 @@
 
     <!-- Sección 2 -->
     <section class="seccion-2" aria-label="Fotografía de los novios">
-      <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=800&q=80" alt="Foto de Jairo y Diana" />
+      <img
+        src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=800&q=80"
+        alt="Foto de Jairo y Diana"
+        loading="lazy"
+        decoding="async"
+      />
     </section>
 
     <!-- Sección 3 -->
@@ -226,8 +273,13 @@
       <div class="fecha">Sábado 06 de diciembre</div>
     </section>
 
-    <!-- Mensaje personalizado con datos de URL -->
-    <section id="mensajePersonalizado" aria-live="polite" role="region"></section>
+    <!-- Mensaje personalizado -->
+    <section
+      id="mensajePersonalizado"
+      aria-live="polite"
+      role="region"
+      aria-atomic="true"
+    ></section>
   </main>
 
   <script>
