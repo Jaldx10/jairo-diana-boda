@@ -1,499 +1,490 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Invitación Boda J & D</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap');
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Invitación Boda J & D</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap');
 
-    /* Colores */
-    :root {
-      --verde-oliva: #273526;
-      --verde-claro: #97A97C;
-      --crema: #e9f5db;
-      --blanco-translucido: rgba(255, 255, 255, 0.45);
-    }
+  :root {
+    --verde-oliva: #273526;
+    --verde-claro: #97A97C;
+    --crema: #e9f5db;
+    --blanco-translucido: rgba(255, 255, 255, 0.45);
+  }
 
-    * {
-      box-sizing: border-box;
-    }
+  * {
+    box-sizing: border-box;
+  }
 
-    body {
-      margin: 0;
-      font-family: 'Playfair Display', serif;
-      background: var(--crema);
-      color: var(--verde-oliva);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      text-align: center;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 1rem;
-    }
+  body {
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+    background: var(--crema);
+    color: var(--verde-oliva);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+  }
 
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background:
-        url('https://i.ibb.co/V9tPc7Y/hojas-acuarela.png') no-repeat center top,
-        url('https://i.ibb.co/z4njQ31/flores-blancas.png') no-repeat center bottom;
-      background-size: 40% auto, 50% auto;
-      opacity: 0.15;
-      pointer-events: none;
-      z-index: -1;
-    }
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      url('https://i.ibb.co/V9tPc7Y/hojas-acuarela.png') no-repeat center top,
+      url('https://i.ibb.co/z4njQ31/flores-blancas.png') no-repeat center bottom;
+    background-size: 40% auto, 50% auto;
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: -1;
+  }
 
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    background: rgba(255 255 255 / 0.85);
+    border-radius: 1rem;
+    padding: 2rem 2.5rem;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+    text-align: center;
+  }
+
+  /* Sección 1: solo imagen cuadrada */
+  .seccion-1 {
+    width: 280px;
+    height: 280px;
+    margin: 0 auto;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+  }
+  .seccion-1 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    user-select: none;
+  }
+
+  /* Sección audio con título */
+  .seccion-audio {
+    margin-top: -1rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .seccion-audio h3 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.3rem;
+    color: var(--verde-oliva);
+    user-select: none;
+  }
+  .seccion-audio audio {
+    outline: none;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  }
+
+  /* Sección padres - mejor alineación y espaciado */
+  .seccion-3 {
+    display: flex;
+    gap: 6rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+    font-weight: 600;
+  }
+  .seccion-3 .texto {
+    flex: 1 1 280px;
+    border-bottom: 2px solid var(--verde-claro);
+    padding-bottom: 1.4rem;
+    color: var(--verde-oliva);
+  }
+  .seccion-3 h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3.4rem;
+    margin-bottom: 0.3rem;
+    color: var(--verde-oliva);
+    user-select: none;
+  }
+  .seccion-3 h2 {
+    font-weight: 400;
+    font-style: italic;
+    margin-top: 0;
+    margin-bottom: 2rem;
+    color: var(--verde-claro);
+    user-select: none;
+  }
+  .nombres {
+    font-size: 1.3rem;
+    line-height: 1.8;
+    white-space: pre-line;
+    user-select: text;
+  }
+
+  /* Sección invitación */
+  .seccion-4 {
+    background: white;
+    padding: 2.5rem 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  .seccion-4 h2 {
+    color: var(--verde-claro);
+    font-weight: 400;
+    margin-bottom: 0.6rem;
+    user-select: none;
+    font-size: 1.5rem;
+  }
+  .seccion-4 .titulo-grande {
+    font-family: 'Great Vibes', cursive;
+    font-size: 4.2rem;
+    color: var(--verde-oliva);
+    margin: 0.3rem 0 1.5rem;
+    font-style: italic;
+    user-select: none;
+  }
+  .seccion-4 .fecha {
+    font-weight: 600;
+    font-size: 1.35rem;
+    color: var(--verde-oliva);
+    user-select: none;
+  }
+
+  /* Countdown */
+  .countdown {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--verde-oliva);
+    margin: 0 auto;
+    background: var(--crema);
+    width: fit-content;
+    padding: 0.75rem 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    user-select: none;
+  }
+
+  /* Sección Ubicación */
+  .seccion-ubicacion {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .ubicacion-item {
+    flex: 1 1 320px;
+    background: white;
+    border-radius: 1rem;
+    padding: 1rem;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    user-select: none;
+  }
+  .ubicacion-item h3 {
+    color: var(--verde-claro);
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+  }
+  .ubicacion-item iframe {
+    border-radius: 1rem;
+    width: 100%;
+    height: 240px;
+    border: none;
+    pointer-events: auto;
+  }
+
+  /* Sección Agenda */
+  .seccion-agenda {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem 2.5rem;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    user-select: none;
+    text-align: left;
+  }
+  .seccion-agenda h2 {
+    color: var(--verde-claro);
+    margin-bottom: 1rem;
+    user-select: none;
+    text-align: center;
+  }
+  .seccion-agenda ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 1.15rem;
+    color: var(--verde-oliva);
+    line-height: 1.7;
+    font-weight: 600;
+  }
+  .seccion-agenda ul li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .seccion-agenda ul li:last-child {
+    border-bottom: none;
+  }
+  /* Iconos agenda */
+  .icono {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    fill: var(--verde-oliva);
+  }
+
+  /* Mensaje personalizado */
+  #mensajePersonalizado {
+    max-width: 600px;
+    margin: 1.5rem auto 0;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--verde-oliva);
+    text-align: center;
+    user-select: none;
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
     main {
-      max-width: 720px;
-      margin: 0 auto;
-      background: rgba(255 255 255 / 0.85);
-      border-radius: 1rem;
-      padding: 2rem 2.5rem;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-      display: flex;
-      flex-direction: column;
-      gap: 3.5rem;
-      text-align: center;
+      padding: 1.5rem 1.5rem 3rem;
+      gap: 3rem;
     }
 
-    /* Sección 1: Monograma inline */
     .seccion-1 {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 1rem;
-      font-family: 'Great Vibes', cursive;
-      font-size: 4.5rem;
-      color: var(--verde-oliva);
-      font-weight: 700;
-      user-select: none;
+      width: 200px;
+      height: 200px;
     }
 
-    .seccion-1 .monograma {
-      border: 3px solid var(--verde-claro);
-      padding: 0.25rem 0.9rem;
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 80px;
-      height: 80px;
-      box-shadow:
-        0 0 8px var(--verde-claro);
-      transition: box-shadow 0.3s ease;
-    }
-
-    .seccion-1 .monograma:hover {
-      box-shadow: 0 0 16px var(--verde-claro);
-    }
-
-    /* Sección 2: Foto */
-    .seccion-2 img {
-      width: 100%;
-      max-height: 420px;
-      object-fit: cover;
-      border-radius: 1rem;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.1);
-      user-select: none;
-    }
-
-    /* Sección 2.5: Audio */
-    .seccion-audio {
-      margin-top: -1rem;
-      margin-bottom: 1rem;
-      display: flex;
-      justify-content: center;
-    }
-    .seccion-audio audio {
-      outline: none;
-      width: 100%;
-      max-width: 400px;
-      border-radius: 1rem;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    }
-
-    /* Sección 3: Texto padres */
     .seccion-3 {
-      display: flex;
-      gap: 4rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      text-align: center;
+      flex-direction: column;
+      gap: 1.5rem;
     }
 
     .seccion-3 .texto {
-      flex: 1 1 280px;
+      flex-basis: 100%;
+      border-bottom: none;
+      padding-bottom: 0;
     }
 
-    .seccion-3 h1 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 3.2rem;
-      margin-bottom: 0.3rem;
-      color: var(--verde-oliva);
-      user-select: none;
-    }
-
-    .seccion-3 h2 {
-      font-weight: 400;
-      font-style: italic;
-      margin-top: 0;
-      margin-bottom: 1.8rem;
-      color: var(--verde-claro);
-      user-select: none;
-    }
-
-    .nombres {
-      font-weight: 600;
-      font-size: 1.25rem;
-      line-height: 1.8;
-      color: var(--verde-oliva);
-      user-select: text;
-      white-space: pre-line;
-    }
-
-    /* Sección 4: Invitación */
     .seccion-4 {
-      background: white;
-      padding: 2.5rem 2rem;
-      border-radius: 1rem;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-      max-width: 520px;
-      margin: 0 auto;
-    }
-
-    .seccion-4 h2 {
-      color: var(--verde-claro);
-      font-weight: 400;
-      margin-bottom: 0.6rem;
-      user-select: none;
-      font-size: 1.5rem;
+      padding: 2rem 1.5rem;
+      max-width: 100%;
     }
 
     .seccion-4 .titulo-grande {
-      font-family: 'Great Vibes', cursive;
-      font-size: 4.2rem;
-      color: var(--verde-oliva);
-      margin: 0.3rem 0 1.5rem;
-      font-style: italic;
-      user-select: none;
+      font-size: 3.2rem;
     }
 
-    .seccion-4 .fecha {
-      font-weight: 600;
-      font-size: 1.35rem;
-      color: var(--verde-oliva);
-      user-select: none;
-    }
-
-    /* Countdown */
-    .countdown {
-      font-weight: 700;
-      font-size: 1.5rem;
-      color: var(--verde-oliva);
-      margin: 0 auto;
-      background: var(--crema);
-      width: fit-content;
-      padding: 0.75rem 1.5rem;
-      border-radius: 1rem;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-      user-select: none;
-    }
-
-    /* Sección Ubicación */
     .seccion-ubicacion {
-      display: flex;
-      gap: 2rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      max-width: 720px;
-      margin: 0 auto;
+      flex-direction: column;
     }
+
     .ubicacion-item {
-      flex: 1 1 320px;
-      background: white;
-      border-radius: 1rem;
-      padding: 1rem;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-      user-select: none;
-    }
-    .ubicacion-item h3 {
-      color: var(--verde-claro);
-      font-weight: 600;
-      margin-bottom: 0.8rem;
-    }
-    .ubicacion-item iframe {
-      border-radius: 1rem;
-      width: 100%;
-      height: 240px;
-      border: none;
-      pointer-events: auto;
+      flex-basis: 100%;
     }
 
-    /* Sección Agenda */
     .seccion-agenda {
-      max-width: 600px;
-      margin: 0 auto;
-      background: white;
-      border-radius: 1rem;
-      padding: 2rem 2.5rem;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-      user-select: none;
-    }
-    .seccion-agenda h2 {
-      color: var(--verde-claro);
-      margin-bottom: 1rem;
-      user-select: none;
-    }
-    .seccion-agenda ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      font-size: 1.15rem;
-      color: var(--verde-oliva);
-      line-height: 1.7;
-      font-weight: 600;
-    }
-    .seccion-agenda ul li {
-      padding: 0.4rem 0;
-      border-bottom: 1px solid #ddd;
-    }
-    .seccion-agenda ul li:last-child {
-      border-bottom: none;
-    }
-
-    /* Mensaje personalizado */
-    #mensajePersonalizado {
-      max-width: 600px;
-      margin: 1.5rem auto 0;
-      font-weight: 700;
-      font-size: 1.3rem;
-      color: var(--verde-oliva);
+      padding: 1.5rem 1.5rem;
       text-align: center;
-      user-select: none;
     }
 
-    /* Responsive */
-    @media (max-width: 640px) {
-      main {
-        padding: 1.5rem 1.5rem 3rem;
-        gap: 3rem;
-      }
-
-      .seccion-1 {
-        font-size: 3.5rem;
-        gap: 0.5rem;
-      }
-
-      .seccion-1 .monograma {
-        width: 60px;
-        height: 60px;
-        border-width: 2px;
-      }
-
-      .seccion-3 {
-        flex-direction: column;
-        gap: 1.5rem;
-      }
-
-      .seccion-3 .texto {
-        flex-basis: 100%;
-      }
-
-      .seccion-4 {
-        padding: 2rem 1.5rem;
-        max-width: 100%;
-      }
-
-      .seccion-4 .titulo-grande {
-        font-size: 3.2rem;
-      }
-
-      .seccion-ubicacion {
-        flex-direction: column;
-      }
-
-      .ubicacion-item {
-        flex-basis: 100%;
-      }
-
-      .seccion-agenda {
-        padding: 1.5rem 1.5rem;
-      }
+    .seccion-agenda ul li {
+      justify-content: center;
     }
-  </style>
+  }
+</style>
 </head>
 <body>
-  <main role="main" aria-label="Invitación de boda de Jairo y Diana">
+<main role="main" aria-label="Invitación de boda de Jairo y Diana">
 
-    <!-- Sección 1: Monograma en línea -->
-    <section class="seccion-1" aria-label="Monograma J y D">
-      <div class="monograma" aria-hidden="true">J &amp; D</div>
-      <div style="font-size: 1.8rem; font-weight: 600; align-self: center; user-select:none;">Jairo &amp; Diana</div>
-    </section>
+  <!-- Sección 1: espacio para imagen cuadrada -->
+  <section class="seccion-1" aria-label="Imagen principal">
+    <img
+      src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=800&q=80"
+      alt="Foto principal de Jairo y Diana"
+      loading="lazy"
+      decoding="async"
+    />
+  </section>
 
-    <!-- Sección 2: Foto -->
-    <section class="seccion-2" aria-label="Fotografía de los novios">
-      <img
-        src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=800&q=80"
-        alt="Foto de Jairo y Diana"
+  <!-- Sección audio con título "Nuestra canción" -->
+  <section class="seccion-audio" aria-label="Nuestra canción">
+    <h3>Nuestra canción</h3>
+    <audio
+      src="https://cdn.pixabay.com/download/audio/2021/09/27/audio_f50e2ff6d7.mp3?filename=soft-music-ambient-6242.mp3"
+      autoplay
+      loop
+      controls
+      preload="auto"
+    >
+      Tu navegador no soporta el elemento de audio.
+    </audio>
+  </section>
+
+  <!-- Sección padres -->
+  <section class="seccion-3" aria-label="Información de los padres">
+    <div class="texto">
+      <h1>Jairo y Diana</h1>
+      <h2>Con la bendición de nuestros padres</h2>
+      <p class="nombres">
+        Lilian Elizabeth Arce<br />
+        Luis René Velásquez
+      </p>
+    </div>
+    <div class="texto">
+      <p class="nombres">
+        Deisy Marina de González<br />
+        Herbert González
+      </p>
+    </div>
+  </section>
+
+  <!-- Sección invitación -->
+  <section class="seccion-4" aria-label="Invitación a la boda">
+    <h2>Tenemos el agrado de invitarle a</h2>
+    <div class="titulo-grande">Nuestra boda</div>
+    <div class="fecha">Sábado 06 de diciembre</div>
+  </section>
+
+  <!-- Countdown -->
+  <section class="countdown" aria-label="Cuenta regresiva para la boda" role="timer" id="countdown"></section>
+
+  <!-- Sección Ubicación -->
+  <section class="seccion-ubicacion" aria-label="Ubicación de la iglesia y recepción">
+    <div class="ubicacion-item">
+      <h3>Iglesia</h3>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.998233822681!2d-89.20374578569777!3d13.692164990346933!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f63399fdb00e4c3%3A0xb302179fbf0e8a12!2sParroquia%20San%20Miguel%20Arc%C3%A1ngel%20-%20Iglesia%20San%20Miguel%20Arc%C3%A1ngel!5e0!3m2!1ses-419!2ssv!4v1691567891234!5m2!1ses-419!2ssv"
+        allowfullscreen=""
         loading="lazy"
-        decoding="async"
-      />
-    </section>
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Ubicación de la iglesia"
+      ></iframe>
+    </div>
+    <div class="ubicacion-item">
+      <h3>Recepción</h3>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.750242816383!2d-89.18943988569823!3d13.70119659010592!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f633aafee0a9c39%3A0x4f0c1c15b6e35ca7!2sCentro%20de%20Convenciones%20San%20Salvador!5e0!3m2!1ses-419!2ssv!4v1691567994567!5m2!1ses-419!2ssv"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Ubicación de la recepción"
+      ></iframe>
+    </div>
+  </section>
 
-    <!-- Sección 2.5: Audio -->
-    <section class="seccion-audio" aria-label="Audio de bienvenida">
-      <audio
-        src="https://cdn.pixabay.com/download/audio/2021/09/27/audio_f50e2ff6d7.mp3?filename=soft-music-ambient-6242.mp3"
-        autoplay
-        loop
-        muted
-        controls
-        preload="auto"
-      >
-        Tu navegador no soporta el elemento de audio.
-      </audio>
-    </section>
+  <!-- Sección Agenda -->
+  <section class="seccion-agenda" aria-label="Agenda del evento">
+    <h2>Agenda del Evento</h2>
+    <ul>
+      <li>
+        <svg class="icono" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1a11 11 0 1011 11A11 11 0 0012 1zm0 20a9 9 0 119-9 9 9 0 01-9 9z"/><path d="M12.75 7h-1.5v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+        <strong>4:00 PM</strong> - Recepción de invitados
+      </li>
+      <li>
+        <svg class="icono" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 6.5a.5.5 0 00-.5-.5h-15a.5.5 0 00-.5.5V20a1 1 0 001 1h14a1 1 0 001-1V6.5zM19 8v9H6V8zm-4-5v4h2V3zm-5 0v4h2V3z"/></svg>
+        <strong>5:00 PM</strong> - Ceremonia religiosa
+      </li>
+      <li>
+        <svg class="icono" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 20v-2H7v-2H5v-2H3v-2h2v-2h2V8h2v2h2v2h2v2h2v2h-2v2h-2v2z"/></svg>
+        <strong>6:30 PM</strong> - Fotos y cóctel
+      </li>
+      <li>
+        <svg class="icono" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10a3 3 0 10-6 0 3 3 0 006 0zm-2 4a2 2 0 00-2 2v3h4v-3a2 2 0 00-2-2zM5 11v2h3v-2zM4 6a1 1 0 011-1h14a1 1 0 011 1v3H4z"/></svg>
+        <strong>8:00 PM</strong> - Cena y baile
+      </li>
+      <li>
+        <svg class="icono" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4a8 8 0 100 16 8 8 0 000-16z"/></svg>
+        <strong>12:00 AM</strong> - Fin del evento
+      </li>
+    </ul>
+  </section>
 
-    <!-- Sección 3: Padres -->
-    <section class="seccion-3" aria-label="Información de los padres">
-      <div class="texto">
-        <h1>Jairo y Diana</h1>
-        <h2>Con la bendición de nuestros padres</h2>
-        <p class="nombres">
-          Lilian Elizabeth Arce<br />
-          Luis René Velásquez
-        </p>
-      </div>
-      <div class="texto">
-        <p class="nombres">
-          Deisy Marina de González<br />
-          Herbert González
-        </p>
-      </div>
-    </section>
+  <!-- Mensaje personalizado -->
+  <div id="mensajePersonalizado" aria-live="polite"></div>
 
-    <!-- Sección 4: Invitación -->
-    <section class="seccion-4" aria-label="Invitación a la boda">
-      <h2>Tenemos el agrado de invitarle a</h2>
-      <div class="titulo-grande">Nuestra boda</div>
-      <div class="fecha">Sábado 06 de diciembre</div>
-    </section>
+</main>
 
-    <!-- Countdown -->
-    <section class="countdown" aria-label="Cuenta regresiva para la boda" role="timer" id="countdown"></section>
+<script>
+  // Countdown para el 6 de diciembre 2025
+  function actualizarCountdown() {
+    const ahora = new Date().getTime();
+    const fechaBoda = new Date('2025-12-06T00:00:00').getTime();
+    const diferencia = fechaBoda - ahora;
 
-    <!-- Sección Ubicación -->
-    <section class="seccion-ubicacion" aria-label="Ubicación de la iglesia y recepción">
-      <div class="ubicacion-item">
-        <h3>Iglesia</h3>
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.998233822681!2d-89.20374578569777!3d13.692164990346933!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f63399fdb00e4c3%3A0xb302179fbf0e8a12!2sParroquia%20San%20Miguel%20Arc%C3%A1ngel%20-%20Iglesia%20San%20Miguel%20Arc%C3%A1ngel!5e0!3m2!1ses-419!2ssv!4v1691567891234!5m2!1ses-419!2ssv"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title="Ubicación de la iglesia"
-        ></iframe>
-      </div>
-      <div class="ubicacion-item">
-        <h3>Recepción</h3>
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.750242816383!2d-89.18943988569823!3d13.70119659010592!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f633aafee0a9c39%3A0x4f0c1c15b6e35ca7!2sCentro%20de%20Convenciones%20San%20Salvador!5e0!3m2!1ses-419!2ssv!4v1691567994567!5m2!1ses-419!2ssv"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title="Ubicación de la recepción"
-        ></iframe>
-      </div>
-    </section>
+    if (diferencia <= 0) {
+      document.getElementById('countdown').textContent = '¡Hoy es el gran día!';
+      return;
+    }
 
-    <!-- Sección Agenda -->
-    <section class="seccion-agenda" aria-label="Agenda del evento">
-      <h2>Agenda del Evento</h2>
-      <ul>
-        <li><strong>4:00 PM</strong> - Recepción de invitados</li>
-        <li><strong>5:00 PM</strong> - Ceremonia religiosa</li>
-        <li><strong>6:30 PM</strong> - Fotos y coctel</li>
-        <li><strong>7:30 PM</strong> - Recepción y cena</li>
-        <li><strong>9:00 PM</strong> - Baile y celebración</li>
-        <li><strong>12:00 AM</strong> - Despedida</li>
-      </ul>
-    </section>
+    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
 
-    <!-- Mensaje personalizado -->
-    <section
-      id="mensajePersonalizado"
-      aria-live="polite"
-      role="region"
-      aria-atomic="true"
-    ></section>
+    document.getElementById('countdown').textContent = 
+      `${dias} días, ${horas} horas y ${minutos} minutos para la boda`;
+  }
 
-  </main>
+  setInterval(actualizarCountdown, 1000);
+  actualizarCountdown();
 
-  <script>
-    // Countdown
-    const countdown = document.getElementById("countdown");
-    const eventDate = new Date("Dec 6, 2025 17:00:00").getTime();
+  // Obtener parámetros URL
+  function obtenerParametrosURL() {
+    const params = new URLSearchParams(window.location.search);
+    return {
+      nombre: params.get("nombre") || "",
+      adultos: parseInt(params.get("adultos")) || 0,
+      ninos: parseInt(params.get("ninos")) || 0,
+    };
+  }
 
-    function actualizarCountdown() {
-      const now = new Date().getTime();
-      const distance = eventDate - now;
+  // Mostrar mensaje personalizado basado en parámetros URL
+  function mostrarMensajePersonalizado() {
+    const { nombre, adultos, ninos } = obtenerParametrosURL();
+    const contenedor = document.getElementById("mensajePersonalizado");
 
-      if (distance < 0) {
-        countdown.textContent = "¡El gran día ha llegado!";
-        clearInterval(intervalo);
-      } else {
-        const dias = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const horas = Math.floor(
-          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-        );
-        const minutos = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        countdown.textContent = `${dias} día${dias !== 1 ? 's' : ''} ${horas} hora${horas !== 1 ? 's' : ''} ${minutos} minuto${minutos !== 1 ? 's' : ''}`;
+    if (nombre && (adultos > 0 || ninos >= 0)) {
+      const textoAdultos = adultos === 1 ? "adulto" : "adultos";
+      const textoNinos = ninos === 1 ? "niño" : "niños";
+
+      let mensaje = `Hola <strong>${nombre}</strong>, estás invitado con `;
+      if (adultos > 0) mensaje += `${adultos} ${textoAdultos}`;
+      if (ninos > 0) {
+        if (adultos > 0) mensaje += ` y `;
+        mensaje += `${ninos} ${textoNinos}`;
       }
+      mensaje += `.`;
+
+      contenedor.innerHTML = mensaje;
+    } else {
+      contenedor.textContent = "";
     }
+  }
 
-    actualizarCountdown();
-    const intervalo = setInterval(actualizarCountdown, 1000);
-
-    // Función para obtener parámetros URL
-    function obtenerParametrosURL() {
-      const params = new URLSearchParams(window.location.search);
-      return {
-        nombre: params.get("nombre") || "",
-        adultos: parseInt(params.get("adultos")) || 0,
-        ninos: parseInt(params.get("ninos")) || 0,
-      };
-    }
-
-    // Mostrar mensaje personalizado basado en parámetros URL
-    function mostrarMensajePersonalizado() {
-      const { nombre, adultos, ninos } = obtenerParametrosURL();
-      const contenedor = document.getElementById("mensajePersonalizado");
-
-      if (nombre && (adultos > 0 || ninos >= 0)) {
-        const textoAdultos = adultos === 1 ? "adulto" : "adultos";
-        const textoNinos = ninos === 1 ? "niño" : "niños";
-
-        let mensaje = `Hola <strong>${nombre}</strong>, estás invitado con `;
-        if (adultos > 0) mensaje += `${adultos} ${textoAdultos}`;
-        if (ninos > 0) {
-          if (adultos > 0) mensaje += ` y `;
-          mensaje += `${ninos} ${textoNinos}`;
-        }
-        mensaje += `.`;
-
-        contenedor.innerHTML = mensaje;
-      } else {
-        contenedor.textContent = "";
-      }
-    }
-
-    mostrarMensajePersonalizado();
-  </script>
+  mostrarMensajePersonalizado();
+</script>
 </body>
 </html>
