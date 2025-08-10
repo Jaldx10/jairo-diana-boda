@@ -55,3 +55,37 @@
   </script>
 </body>
 </html>
+
+<section class="confirmacion-personalizada">
+  <h2>Confirma tu asistencia</h2>
+  <form id="confirmacionForm">
+    <label for="nombre">Nombre:</label><br/>
+    <input type="text" id="nombre" name="nombre" required/><br/><br/>
+    
+    <label for="adultos">Cantidad de adultos:</label><br/>
+    <input type="number" id="adultos" name="adultos" min="0" value="1" required/><br/><br/>
+    
+    <label for="ninos">Cantidad de niños:</label><br/>
+    <input type="number" id="ninos" name="ninos" min="0" value="0" required/><br/><br/>
+    
+    <button type="submit">Confirmar asistencia</button>
+  </form>
+  <div id="mensajeConfirmacion" style="margin-top:20px; font-weight:bold;"></div>
+</section>
+
+<script>
+  const form = document.getElementById('confirmacionForm');
+  const mensaje = document.getElementById('mensajeConfirmacion');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const nombre = form.nombre.value.trim();
+    const adultos = form.adultos.value;
+    const ninos = form.ninos.value;
+
+    if(nombre && adultos >= 0 && ninos >= 0) {
+      mensaje.textContent = `¡Gracias ${nombre}! Hemos registrado tu asistencia con ${adultos} adulto(s) y ${ninos} niño(s).`;
+      form.reset();
+    }
+  });
+</script>
