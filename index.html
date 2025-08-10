@@ -3,72 +3,235 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Invitación de Boda - Jairo & Diana</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
+  <title>Invitación Boda J & D</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap');
+
+    /* Colores */
+    :root {
+      --verde-oliva: #273526;
+      --verde-claro: #97A97C;
+      --crema: #e9f5db;
+      --blanco-translucido: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Reset y base */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      background: var(--crema);
+      color: var(--verde-oliva);
+      line-height: 1.5;
+    }
+
+    /* Fondo con acuarela de hojas y flores */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        url('https://i.ibb.co/V9tPc7Y/hojas-acuarela.png') no-repeat center top,
+        url('https://i.ibb.co/z4njQ31/flores-blancas.png') no-repeat center bottom;
+      background-size: contain;
+      opacity: 0.15;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* Contenedor general */
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1rem 1rem 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    /* Sección 1 */
+    .seccion-1 {
+      position: relative;
+      height: 300px;
+      background: var(--verde-oliva);
+      border-radius: 50%;
+      width: 300px;
+      margin: 2rem auto 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow:
+        inset 0 0 50px var(--verde-claro),
+        0 0 30px rgba(0,0,0,0.2);
+    }
+
+    .seccion-1::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 20% 20%, var(--verde-claro) 15%, transparent 70%),
+        radial-gradient(circle at 80% 80%, var(--verde-claro) 20%, transparent 60%);
+      opacity: 0.3;
+      z-index: 0;
+    }
+
+    .iniciales {
+      font-family: 'Great Vibes', cursive;
+      font-size: 7rem;
+      color: var(--crema);
+      z-index: 1;
+      user-select: none;
+    }
+
+    /* Sección 2: Foto */
+    .seccion-2 img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 1rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    /* Sección 3: Texto padres */
+    .seccion-3 {
+      display: flex;
+      gap: 3rem;
+      justify-content: center;
+      text-align: center;
+      flex-wrap: wrap;
+    }
+
+    .seccion-3 .texto {
+      flex: 1 1 250px;
+    }
+
+    .seccion-3 h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      margin-bottom: 0.2rem;
+      color: var(--verde-oliva);
+    }
+
+    .seccion-3 h2 {
+      font-weight: 400;
+      font-style: italic;
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+      color: var(--verde-claro);
+    }
+
+    .nombres {
+      font-weight: 600;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: var(--verde-oliva);
+    }
+
+    /* Sección 4: Invitación */
+    .seccion-4 {
+      text-align: center;
+      background: white;
+      padding: 2rem 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      max-width: 500px;
+      margin: 0 auto 3rem;
+    }
+
+    .seccion-4 h2 {
+      color: var(--verde-claro);
+      font-weight: 400;
+      margin-bottom: 0.4rem;
+    }
+
+    .seccion-4 .titulo-grande {
+      font-family: 'Great Vibes', cursive;
+      font-size: 4rem;
+      color: var(--verde-oliva);
+      margin: 0.2rem 0 1.2rem;
+      font-style: italic;
+      user-select: none;
+    }
+
+    .seccion-4 .fecha {
+      font-weight: 600;
+      font-size: 1.3rem;
+      color: var(--verde-oliva);
+    }
+
+    /* Mensaje personalizado */
+    #mensajePersonalizado {
+      max-width: 600px;
+      margin: 1rem auto;
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--verde-oliva);
+      text-align: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .seccion-3 {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .seccion-1 {
+        width: 220px;
+        height: 220px;
+        font-size: 5rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header class="hero">
-    <div class="overlay"></div>
-    <div class="floral-top"></div>
-    <h1 class="names">Jairo & Diana</h1>
-    <p class="subtitle">¡Nos casamos!</p>
-    <div id="countdown"></div>
-  </header>
+  <main>
+    <!-- Sección 1 -->
+    <section class="seccion-1" aria-label="Iniciales de J y D">
+      <div class="iniciales">J &amp; D</div>
+    </section>
 
-  <section class="details">
-    <h2>Detalles del Evento</h2>
-    <p><strong>Fecha:</strong> 6 de diciembre de 2025</p>
-    <p><strong>Hora:</strong> 5:00 PM</p>
-    <p>
-      <strong>Lugar:</strong>
-      <a href="https://maps.google.com/?q=San+Salvador+El+Salvador" target="_blank">San Salvador, El Salvador</a>
-    </p>
-  </section>
+    <!-- Sección 2 -->
+    <section class="seccion-2" aria-label="Fotografía de los novios">
+      <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=800&q=80" alt="Foto de Jairo y Diana" />
+    </section>
 
-  <!-- Mensaje personalizado basado en URL -->
-  <section id="mensajePersonalizado" style="margin: 20px auto; max-width: 600px; font-weight: bold; color: #273526; font-size: 1.2em;"></section>
+    <!-- Sección 3 -->
+    <section class="seccion-3" aria-label="Información de los padres">
+      <div class="texto">
+        <h1>Jairo y Diana</h1>
+        <h2>Con la bendición de nuestros padres</h2>
+        <p class="nombres">
+          Lilian Elizabeth Arce<br />
+          Luis René Velásquez
+        </p>
+      </div>
+      <div class="texto">
+        <p class="nombres">
+          Deisy Marina de González<br />
+          Herbert González
+        </p>
+      </div>
+    </section>
 
-  <section class="rsvp">
-    <h2>Confirmar Asistencia</h2>
-    <p>Por favor, confirma si podrás acompañarnos en nuestro gran día.</p>
-    <iframe
-      src="ENLACE_DE_TU_FORMULARIO_DE_GOOGLE"
-      width="100%"
-      height="500"
-      frameborder="0"
-      >Cargando…</iframe
-    >
-  </section>
+    <!-- Sección 4 -->
+    <section class="seccion-4" aria-label="Invitación a la boda">
+      <h2>Tenemos el agrado de invitarle a</h2>
+      <div class="titulo-grande">Nuestra boda</div>
+      <div class="fecha">Sábado 06 de diciembre</div>
+    </section>
 
-  <footer>
-    <div class="floral-bottom"></div>
-    <p>Con cariño,<br />Jairo & Diana</p>
-  </footer>
+    <!-- Mensaje personalizado con datos de URL -->
+    <section id="mensajePersonalizado" aria-live="polite" role="region"></section>
+  </main>
 
   <script>
-    // Countdown
-    const countdown = document.getElementById("countdown");
-    const eventDate = new Date("Dec 6, 2025 17:00:00").getTime();
-
-    const timer = setInterval(function () {
-      const now = new Date().getTime();
-      const distance = eventDate - now;
-
-      if (distance < 0) {
-        clearInterval(timer);
-        countdown.innerHTML = "¡El gran día ha llegado!";
-      } else {
-        const dias = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const horas = Math.floor(
-          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-        );
-        const minutos = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        countdown.innerHTML = `${dias} días ${horas} horas ${minutos} minutos`;
-      }
-    }, 1000);
-
-    // Mostrar mensaje personalizado basado en parámetros URL
+    // Función para obtener parámetros URL
     function obtenerParametrosURL() {
       const params = new URLSearchParams(window.location.search);
       return {
@@ -78,6 +241,7 @@
       };
     }
 
+    // Mostrar mensaje personalizado basado en parámetros URL
     function mostrarMensajePersonalizado() {
       const { nombre, adultos, ninos } = obtenerParametrosURL();
       const contenedor = document.getElementById("mensajePersonalizado");
@@ -96,7 +260,7 @@
 
         contenedor.innerHTML = mensaje;
       } else {
-        contenedor.textContent = ""; // No muestra nada si no hay parámetros
+        contenedor.textContent = "";
       }
     }
 
