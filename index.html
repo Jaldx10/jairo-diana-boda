@@ -5,19 +5,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Invitación — Jairo & Diana</title>
 
-<!--
-  Archivo: index.html
-  Mobile-first. Paleta: #e9f5db (crema), #273526 (verde-oliva), #97A97C (verde-claro)
-  - Autoplay audio con fallback
-  - Monograma centrado
-  - Galería carrusel
-  - Nuestro camino
-  - Countdown (6 dic 2025 17:00)
-  - Ubicaciones con maps
-  - Agenda con iconos
-  - Mensaje personalizado por URL ?nombre=&adultos=&ninos=
--->
-
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap');
 
@@ -54,22 +41,26 @@
   /* --- MONOGRAMA CENTRADO --- */
   header.monograma {
     display:flex; justify-content:center; align-items:center;
-    padding:8px 0 6px;
+    padding:12px 0 6px;
   }
   .monograma-box {
-    width:120px; height:120px; border-radius:22px;
-    display:flex; align-items:center; justify-content:center;
+    display:flex; align-items:center; gap:6px;
     background:linear-gradient(180deg, rgba(151,169,124,0.09), rgba(39,53,38,0.03));
     border:2px solid rgba(39,53,38,0.06);
     box-shadow:0 8px 26px rgba(0,0,0,0.08);
+    border-radius:24px;
+    padding: 10px 24px;
   }
   .monograma-text {
     font-family:'Great Vibes', cursive;
-    font-size:44px;
+    font-size:56px;
     color:var(--verde-oliva);
-    transform-origin:center;
     animation:monogramPop 0.9s cubic-bezier(.2,.8,.2,1) forwards;
     opacity:0;
+    user-select:none;
+  }
+  .monograma-text:nth-child(2) {
+    font-size:56px;
   }
   @keyframes monogramPop {
     0% { transform:scale(0.7) rotate(-6deg); opacity:0 }
@@ -99,26 +90,36 @@
   .audio-player {
     width:100%; max-width:540px; position:relative;
   }
-  audio { width:100%; border-radius:10px; box-shadow:0 8px 26px rgba(0,0,0,0.08) }
-
-  .audio-fallback {
-    position:absolute; inset:0; display:flex; align-items:center; justify-content:center; pointer-events:none; border-radius:10px;
-  }
-  .btn-play {
-    pointer-events:auto;
-    background:var(--verde-oliva); color:var(--crema); border:none; padding:10px 14px; border-radius:999px; font-weight:700;
-    box-shadow:0 10px 28px rgba(39,53,38,0.16); cursor:pointer;
+  audio { 
+    width:100%; border-radius:10px; box-shadow:0 8px 26px rgba(0,0,0,0.08);
+    outline:none;
   }
 
   /* --- NUESTROS PADRES --- */
   .parents {
-    display:grid; grid-template-columns:1fr; gap:10px; margin:10px 0 14px; text-align:center;
+    margin:14px 0 16px;
+    text-align:center;
+  }
+  .parents h3 {
+    font-weight:600;
+    font-size:1.3rem;
+    margin-bottom: 12px;
+    color: var(--verde-claro);
+    font-style: italic;
+  }
+  .parent-cards {
+    display:grid; 
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+    justify-items:center;
   }
   .parent-card {
     background:linear-gradient(180deg, rgba(233,245,219,0.65), rgba(255,255,255,0.35));
-    border:1px solid rgba(151,169,124,0.12); padding:12px; border-radius:12px;
+    border:1px solid rgba(151,169,124,0.12); padding:14px 18px; border-radius:12px;
+    width: 100%;
+    max-width:280px;
   }
-  .parent-card h4 { margin:0; color:var(--verde-claro); font-size:1.05rem; font-weight:700 }
+  .parent-card h4 { margin:0; color:var(--verde-claro); font-size:1.1rem; font-weight:700 }
   .parent-card p { margin:6px 0 0; font-weight:700 }
 
   /* --- INVITACIÓN (título grande) --- */
@@ -132,43 +133,58 @@
 
   /* --- COUNTDOWN --- */
   .countdown {
-    margin:12px auto; display:inline-block; background:var(--crema); padding:10px 14px; border-radius:12px; font-weight:800;
-    box-shadow:0 8px 20px rgba(0,0,0,0.06)
+    margin:24px auto;
+    font-weight:900;
+    font-size:2.8rem;
+    max-width:fit-content;
+    padding: 10px 18px;
+    border-radius:16px;
+    background: var(--crema);
+    color: var(--verde-oliva);
+    box-shadow: 0 8px 26px rgba(0,0,0,0.06);
+    text-align: center;
+    user-select:none;
   }
 
   /* --- UBICACIONES (ceremonia + recepción) */
   .locations {
-    display:grid; grid-template-columns:1fr; gap:14px; margin:18px 0;
+    display:grid; grid-template-columns:1fr; gap:24px; margin:22px 0;
   }
   .loc-card {
-    background:white; border-radius:12px; padding:12px; box-shadow:0 8px 22px rgba(0,0,0,0.06); text-align:left;
+    background:white; border-radius:12px; padding:18px; box-shadow:0 8px 22px rgba(0,0,0,0.06); text-align:center;
   }
-  .loc-top { display:flex; gap:12px; align-items:center }
   .loc-icon {
-    width:60px; height:60px; flex-shrink:0; border-radius:10px; display:flex; align-items:center; justify-content:center; background:linear-gradient(180deg, rgba(151,169,124,0.09), rgba(39,53,38,0.03));
-    border:1px solid rgba(39,53,38,0.06)
+    width:72px; height:72px; margin: 0 auto 12px auto; border-radius:16px; display:flex; align-items:center; justify-content:center; background:linear-gradient(180deg, rgba(151,169,124,0.09), rgba(39,53,38,0.03));
+    border:1.2px solid rgba(39,53,38,0.06)
   }
-  .loc-title { font-weight:800; color:var(--verde-oliva); margin:0; font-size:1.05rem }
-  .loc-sub { color:var(--verde-oliva); margin:6px 0 0; font-weight:600; font-size:0.95rem }
-  .loc-map { margin-top:10px; border-radius:10px; overflow:hidden }
-  .loc-map iframe { width:100%; height:200px; border:0; display:block }
+  .loc-title { font-weight:800; color:var(--verde-oliva); margin:0; font-size:1.3rem }
+  .loc-sub { color:var(--verde-oliva); margin:8px 0 0; font-weight:600; font-size:1rem }
+  .loc-map { margin-top:16px; border-radius:12px; overflow:hidden }
+  .loc-map iframe { width:100%; height:220px; border:0; display:block }
 
   /* --- AGENDA --- */
   .agenda {
-    background:white; border-radius:12px; padding:12px; box-shadow:0 8px 22px rgba(0,0,0,0.06); margin:12px 0
+    background:white; border-radius:12px; padding:16px 20px; box-shadow:0 8px 22px rgba(0,0,0,0.06); margin:16px 0
   }
-  .agenda h5{ margin:0 0 12px 0; color:var(--verde-claro); text-align:center }
+  .agenda h5{ margin:0 0 18px 0; color:var(--verde-claro); text-align:center; font-weight:700; font-size:1.4rem }
   .agenda ul{ list-style:none; padding:0; margin:0 }
-  .agenda li{ display:flex; gap:12px; align-items:center; padding:10px 6px; border-bottom:1px solid rgba(0,0,0,0.04) }
-  .agenda .time{ font-weight:800; width:78px }
-  .icon{ width:22px; height:22px; flex-shrink:0; fill:var(--verde-oliva) }
+  .agenda li{ display:flex; gap:14px; align-items:center; padding:12px 8px; border-bottom:1px solid rgba(0,0,0,0.05); font-weight:600; font-size:1rem; color:var(--verde-oliva) }
+  .agenda .time{ font-weight:900; width:78px; user-select:none }
+  .icon{ width:24px; height:24px; flex-shrink:0; fill:var(--verde-oliva) }
 
   /* --- REGALOS --- */
-  .gifts { background:white; border-radius:12px; padding:12px; box-shadow:0 8px 22px rgba(0,0,0,0.06); text-align:center; margin:12px 0 }
-  .gifts p{ margin:0; font-weight:700; color:var(--verde-oliva) }
+  .gifts {
+    background:white; border-radius:12px; padding:16px 20px; box-shadow:0 8px 22px rgba(0,0,0,0.06);
+    text-align:center; margin:16px 0; display:flex; flex-direction: column; align-items: center; gap:10px;
+  }
+  .gifts p{ margin:0; font-weight:700; color:var(--verde-oliva); font-size:1.1rem }
+
+  .gifts svg {
+    width: 40px; height: 40px; fill: var(--verde-oliva);
+  }
 
   /* --- GALERÍA (carrusel simple) --- */
-  .gallery { margin:12px 0 }
+  .gallery { margin:18px 0 }
   .gallery .wrap { position:relative; overflow:hidden; border-radius:12px; box-shadow:0 12px 36px rgba(0,0,0,0.08) }
   .gallery .track { display:flex; transition:transform .45s ease }
   .gallery .track img{ width:100%; min-width:280px; object-fit:cover; height:320px }
@@ -176,21 +192,32 @@
   .btn { background:var(--verde-claro); color:white; border:none; padding:8px 12px; border-radius:999px; cursor:pointer; font-weight:700 }
 
   /* --- NUESTRO CAMINO (horizontal scroll) --- */
-  .story { margin:12px 0; background:white; padding:12px; border-radius:12px; box-shadow:0 8px 22px rgba(0,0,0,0.06) }
-  .story .list { display:flex; gap:12px; overflow-x:auto; padding:8px 4px }
-  .story .item { min-width:150px; background:var(--crema); padding:10px; border-radius:10px; text-align:center }
+  .story { margin:18px 0; background:white; padding:14px; border-radius:12px; box-shadow:0 8px 22px rgba(0,0,0,0.06) }
+  .story .list { display:flex; gap:14px; overflow-x:auto; padding:10px 6px; -webkit-overflow-scrolling:touch; scroll-behavior:smooth }
+  .story .item { min-width:150px; background:var(--crema); padding:12px; border-radius:10px; text-align:center; font-weight:600; font-size:0.95rem }
 
-  /* --- CÓDIGO VESTIMENTA & CONTACTO --- */
-  .small-card { background:white; border-radius:12px; padding:12px; box-shadow:0 8px 22px rgba(0,0,0,0.06); margin:12px 0; text-align:center }
+  /* --- CÓDIGO VESTIMENTA & ICONOS --- */
+  .small-card { background:white; border-radius:12px; padding:16px 18px; box-shadow:0 8px 22px rgba(0,0,0,0.06); margin:18px 0; text-align:center; font-weight:700; color:var(--verde-oliva) }
+  .dress-icons {
+    margin-top:12px;
+    display:flex;
+    justify-content:center;
+    gap:48px;
+  }
+  .dress-icons svg {
+    width: 68px;
+    height: 68px;
+    fill: var(--verde-oliva);
+  }
 
   /* --- MENSAJE PERSONALIZADO --- */
-  #personalBox { margin:14px auto; max-width:560px; background:rgba(213,228,183,0.8); border:1.2px solid var(--verde-claro); padding:12px 14px; border-radius:12px; font-weight:800; text-align:center }
+  #personalBox { margin:18px auto; max-width:560px; background:rgba(213,228,183,0.8); border:1.2px solid var(--verde-claro); padding:12px 14px; border-radius:12px; font-weight:800; text-align:center }
 
   /* RESPONSIVE DESKTOP */
   @media(min-width:780px){
     main{ padding:26px }
-    .parents{ grid-template-columns:1fr 1fr }
-    .locations{ grid-template-columns:1fr 1fr; gap:18px }
+    .parents .parent-cards{ grid-template-columns:1fr 1fr }
+    .locations{ grid-template-columns:1fr 1fr; gap:28px }
     .gallery .track img { height:420px }
   }
 </style>
@@ -198,10 +225,12 @@
 <body>
 <main>
 
-  <!-- 1. PORTADA: monograma centrado + autoplay audio -->
+  <!-- 1. PORTADA: monograma centrado en línea y animado -->
   <header class="monograma fade delay-1" role="banner" aria-label="Monograma">
     <div class="monograma-box" aria-hidden="true">
-      <div class="monograma-text">J &amp; D</div>
+      <div class="monograma-text" style="animation-delay:0s">J</div>
+      <div class="monograma-text" style="animation-delay:0.2s">&amp;</div>
+      <div class="monograma-text" style="animation-delay:0.4s">D</div>
     </div>
   </header>
 
@@ -210,27 +239,26 @@
     <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80" alt="Foto de Jairo y Diana (reemplazar)" />
   </section>
 
-  <!-- 3. NUESTRA CANCIÓN (audio autoplay) -->
+  <!-- 3. NUESTRA CANCIÓN (audio autoplay sin botón) -->
   <section class="audio-section fade delay-2" aria-label="Nuestra canción">
     <h3 class="audio-title">Nuestra canción</h3>
     <div class="audio-player" aria-hidden="false">
-      <!-- Reemplaza src por tu archivo raw GitHub o Drive directo si es fiable -->
-      <audio id="audio" src="https://github.com/Jaldx10/jairo-diana-boda/raw/refs/heads/main/Bruno-Major-Nothing-Lyric-Chord.MP3" preload="auto" playsinline loop controls></audio>
-      <div class="audio-fallback" id="audioFallback" style="display:none">
-        <button class="btn-play" id="btnPlay">▶ Reproducir</button>
-      </div>
+      <audio id="audio" src="https://github.com/Jaldx10/jairo-diana-boda/raw/refs/heads/main/Bruno-Major-Nothing-Lyric-Chord.MP3" preload="auto" playsinline loop autoplay></audio>
     </div>
   </section>
 
-  <!-- 4. NUESTROS PADRES -->
+  <!-- 4. NUESTROS PADRES reorganizado -->
   <section class="parents fade delay-3" aria-label="Nuestros padres">
-    <div class="parent-card" aria-labelledby="pad1">
-      <h4 id="pad1">Lilian Elizabeth Arce</h4>
-      <p>Luis René Velásquez</p>
-    </div>
-    <div class="parent-card" aria-labelledby="pad2">
-      <h4 id="pad2">Deisy Marina de González</h4>
-      <p>Herbert González</p>
+    <h3>Con la bendición de nuestros padres</h3>
+    <div class="parent-cards">
+      <div class="parent-card" aria-labelledby="pad1">
+        <h4 id="pad1">Lilian Elizabeth Arce</h4>
+        <p>Luis René Velásquez</p>
+      </div>
+      <div class="parent-card" aria-labelledby="pad2">
+        <h4 id="pad2">Deisy Marina de González</h4>
+        <p>Herbert González</p>
+      </div>
     </div>
   </section>
 
@@ -244,8 +272,8 @@
   <!-- Mensaje personalizado -->
   <div id="personalBox" aria-live="polite" style="display:none"></div>
 
-  <!-- 6. COUNTDOWN -->
-  <div class="countdown fade delay-3" id="countBlock" aria-live="polite">Cargando cuenta regresiva...</div>
+  <!-- 6. COUNTDOWN centrado y más grande -->
+  <div class="countdown fade delay-3" id="countBlock" aria-live="polite" role="timer" aria-atomic="true" aria-label="Cuenta regresiva para la boda">Cargando cuenta regresiva...</div>
 
   <!-- 7. AGENDA -->
   <section class="agenda fade delay-4" aria-label="Agenda">
@@ -257,196 +285,138 @@
     </ul>
   </section>
 
-  <!-- 8. REGALOS (texto simple) -->
+  <!-- 8. REGALOS con icono de sobre centrado -->
   <section class="gifts fade delay-4" aria-label="Regalos">
-    <p>Agradeceremos mucho las muestras de cariño en regalo de sobre.</p>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" role="img" aria-label="Icono de sobre">
+      <path d="M2 6a2 2 0 012-2h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6zm2 0l8 5 8-5H4zm16 12V8l-8 5-8-5v10h16z"/>
+    </svg>
+    <p>Si deseas apoyarnos con un regalo, puedes contactarnos directamente o enviar tus buenos deseos.</p>
   </section>
 
-  <!-- 9. DATOS DEL EVENTO: ceremonia y recepción con iconos y map -->
-  <section class="locations fade delay-4" aria-label="Datos del evento">
-    <!-- Ceremonia -->
-    <article class="loc-card" aria-label="Ceremonia">
-      <div class="loc-top">
-        <div class="loc-icon" aria-hidden="true">
-          <!-- ícono de iglesia simple -->
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7v13h7v-6h6v6h7V7z" stroke="var(--verde-oliva)" stroke-width="1.2" fill="rgba(0,0,0,0.02)"/></svg>
-        </div>
-        <div>
-          <div class="loc-title">Parroquia San Vicente de Paúl</div>
-          <div class="loc-sub">Dirección: Calle Ejemplo #123, San Salvador</div>
-        </div>
+  <!-- 9. UBICACIONES con iconos grandes centrados y ordenados -->
+  <section class="locations fade delay-4" aria-label="Ubicaciones">
+    <!-- Iglesia -->
+    <div class="loc-card" aria-labelledby="loc1">
+      <div class="loc-icon" aria-hidden="true">
+        <!-- Icono iglesia -->
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--verde-oliva)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+          <path d="M2 17h20v5H2z"/>
+          <path d="M12 12v5"/>
+        </svg>
       </div>
-      <div class="loc-map" style="margin-top:12px">
-        <!-- reemplaza el src por tu Google Maps embed real si quieres -->
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3893.233412316576!2d-89.20810548502172!3d13.705746390394025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f6338d52c1bbd65%3A0x65dcd5f4bc76e7a8!2sParroquia%20San%20Vicente%20de%20Pa%C3%BAl!5e0!3m2!1ses!2ssv!4v1691579823956!5m2!1ses!2ssv" loading="lazy" referrerpolicy="no-referrer-when-downgrade" aria-label="Mapa Ceremonia"></iframe>
+      <h3 class="loc-title" id="loc1">Parroquia Santa María</h3>
+      <p class="loc-sub">Av. Central #123, San Salvador, El Salvador</p>
+      <div class="loc-map">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3879.098330558527!2d-89.20313208465814!3d13.69294099035516!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f6338f1a5a85f9b%3A0x4d297c9c81fcb4f9!2sParroquia%20Santa%20Mar%C3%ADa!5e0!3m2!1ses!2ssv!4v1691678400000!5m2!1ses!2ssv" 
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" 
+          title="Mapa de Parroquia Santa María"></iframe>
       </div>
-    </article>
+    </div>
 
     <!-- Recepción -->
-    <article class="loc-card" aria-label="Recepción">
-      <div class="loc-top">
-        <div class="loc-icon" aria-hidden="true">
-          <!-- ícono recepción (copa) -->
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><path d="M6 2h12l-1 7a6 6 0 01-10 0L6 2z" stroke="var(--verde-oliva)" stroke-width="1.2" fill="rgba(0,0,0,0.02)"/></svg>
-        </div>
-        <div>
-          <div class="loc-title">Restaurante El Rincón Gourmet</div>
-          <div class="loc-sub">Dirección: Blvd. Ejemplo #456, San Salvador</div>
-        </div>
+    <div class="loc-card" aria-labelledby="loc2">
+      <div class="loc-icon" aria-hidden="true">
+        <!-- Icono recepción (ejemplo: copa de brindis) -->
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--verde-oliva)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 21h16M12 3v18M6 12h12M9 6h6"/>
+        </svg>
       </div>
-      <div class="loc-map" style="margin-top:12px">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3892.896788834885!2d-89.22858898502227!3d13.723386690374322!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f633fd0cbe949e5%3A0x33ce22e4d6a411c9!2sRestaurante%20El%20Rincon%20Gourmet!5e0!3m2!1ses!2ssv!4v1691580022749!5m2!1ses!2ssv" loading="lazy" referrerpolicy="no-referrer-when-downgrade" aria-label="Mapa Recepción"></iframe>
+      <h3 class="loc-title" id="loc2">Salón La Esperanza</h3>
+      <p class="loc-sub">Calle Los Pinos #456, San Salvador, El Salvador</p>
+      <div class="loc-map">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3879.218233844218!2d-89.2123452846579!3d13.69804509034419!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f6337c6a9d178bb%3A0x927c5c3c1b4b1b6b!2sSal%C3%B3n%20La%20Esperanza!5e0!3m2!1ses!2ssv!4v1691678600000!5m2!1ses!2ssv" 
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" 
+          title="Mapa de Salón La Esperanza"></iframe>
       </div>
-    </article>
+    </div>
   </section>
 
-  <!-- 10. GALERÍA (carrusel) -->
-  <section class="gallery fade delay-4" aria-label="Galería">
-    <div class="wrap" aria-hidden="false">
-      <div class="track" id="track">
-        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=720&q=80" alt="Foto 1" />
-        <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=720&q=80" alt="Foto 2" />
-        <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=720&q=80" alt="Foto 3" />
+  <!-- 10. GALERÍA (opcional) -->
+  <section class="gallery fade delay-4" aria-label="Galería de fotos">
+    <div class="wrap">
+      <div class="track" id="galleryTrack">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Foto de momentos" />
+        <img src="https://images.unsplash.com/photo-1516910817561-18dcbf7eea41?auto=format&fit=crop&w=600&q=80" alt="Foto de momentos" />
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80" alt="Foto de momentos" />
       </div>
     </div>
     <div class="controls">
-      <button class="btn" id="prev">&#8592;</button>
-      <button class="btn" id="next">&#8594;</button>
+      <button class="btn" aria-label="Foto anterior" onclick="scrollGallery(-1)">‹</button>
+      <button class="btn" aria-label="Foto siguiente" onclick="scrollGallery(1)">›</button>
     </div>
   </section>
 
-  <!-- 11. NUESTRO CAMINO -->
+  <!-- 11. NUESTRO CAMINO (línea horizontal scroll) -->
   <section class="story fade delay-4" aria-label="Nuestro camino">
-    <h5 style="color:var(--verde-claro); text-align:center; margin:0 0 10px 0">Nuestro camino</h5>
-    <div class="list" aria-hidden="false">
-      <div class="item"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=300&q=80" alt="Historia 1" style="width:100%;height:110px;object-fit:cover;border-radius:8px"/><p>Cómo nos conocimos en la universidad</p></div>
-      <div class="item"><img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=300&q=80" alt="Historia 2" style="width:100%;height:110px;object-fit:cover;border-radius:8px"/><p>El primer viaje juntos</p></div>
-      <div class="item"><img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=300&q=80" alt="Historia 3" style="width:100%;height:110px;object-fit:cover;border-radius:8px"/><p>La propuesta inolvidable</p></div>
+    <div class="list" tabindex="0" aria-roledescription="carousel" aria-label="Historia de la pareja">
+      <div class="item">Nos conocimos en la universidad</div>
+      <div class="item">Primer viaje juntos a la playa</div>
+      <div class="item">Compromiso en diciembre</div>
+      <div class="item">Preparativos para la boda</div>
+      <div class="item">Esperamos compartir con ustedes</div>
     </div>
   </section>
 
-  <!-- 12. CÓDIGO DE VESTIMENTA -->
+  <!-- 12. CÓDIGO DE VESTIMENTA con iconos grandes centrados -->
   <section class="small-card fade delay-4" aria-label="Código de vestimenta">
-    <h5 style="color:var(--verde-claro); margin:0 0 8px 0">Código de vestimenta</h5>
-    <p style="margin:0; font-style:italic">Elegante casual — recomendamos tonos neutros y accesorios sutiles.</p>
-  </section>
-
-  <!-- 13. CONTACTO -->
-  <section class="small-card fade delay-4" aria-label="Contacto">
-    <h5 style="color:var(--verde-claro); margin:0 0 8px 0">Contacto</h5>
-    <p style="margin:0">Para dudas escribe a <a href="mailto:contacto@bodaejemplo.com" style="color:var(--verde-oliva); font-weight:700">contacto@bodaejemplo.com</a></p>
+    <p style="font-weight:900; font-size:1.3rem; margin-bottom:12px;">Código de vestimenta</p>
+    <div class="dress-icons" role="img" aria-label="Iconos de traje y vestido formal">
+      <!-- Icono traje -->
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M4 22v-7l4-4-1-6 4 3 4-3-1 6 4 4v7H4z" />
+      </svg>
+      <!-- Icono vestido -->
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M16 2a4 4 0 00-8 0v5H4v3l4 3-1 6h10l-1-6 4-3V7h-4V2z" />
+      </svg>
+    </div>
+    <p style="margin-top:12px; font-weight:600; font-size:1rem;">
+      Formal: traje para los caballeros y vestido elegante para las damas.
+    </p>
   </section>
 
 </main>
 
 <script>
-/* ============================
-  SCRIPT GENERAL (autoplay audio, gallery, countdown, URL params)
-   - Mobile first, fallback play button if autoplay bloqueado.
-   - Personalización por URL: ?nombre=...&adultos=...&ninos=...
-============================ */
+  // Countdown script
+  const countBlock = document.getElementById('countBlock');
+  // Fecha del evento
+  const eventDate = new Date('2025-12-06T16:00:00');
 
-/* AUDIO: autoplay con fallback */
-const audio = document.getElementById('audio');
-const audioFallback = document.getElementById('audioFallback');
-const btnPlay = document.getElementById('btnPlay');
+  function updateCountdown() {
+    const now = new Date();
+    let diff = eventDate - now;
 
-function tryPlayAudio(){
-  if(!audio) return;
-  // Intenta reproducir
-  const p = audio.play();
-  if(p !== undefined){
-    p.then(()=> {
-      // Autoplay OK -> hide fallback
-      if(audioFallback) audioFallback.style.display = 'none';
-    }).catch(()=> {
-      // Autoplay bloqueado
-      if(audioFallback) audioFallback.style.display = 'flex';
-    });
-  } else {
-    if(audioFallback) audioFallback.style.display = 'flex';
+    if(diff <= 0) {
+      countBlock.textContent = "¡La boda ha comenzado!";
+      return;
+    }
+
+    const days = Math.floor(diff / (1000*60*60*24));
+    diff -= days * (1000*60*60*24);
+
+    const hours = Math.floor(diff / (1000*60*60));
+    diff -= hours * (1000*60*60);
+
+    const minutes = Math.floor(diff / (1000*60));
+    diff -= minutes * (1000*60);
+
+    const seconds = Math.floor(diff / 1000);
+
+    countBlock.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
   }
-}
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
 
-// Si el browser bloquea autoplay con sonido, mostramos botón
-if(btnPlay){
-  btnPlay.addEventListener('click', ()=> {
-    audio.play().then(()=> { if(audioFallback) audioFallback.style.display='none' }).catch(()=>{ alert('Por favor usa el control de audio para reproducir.')});
-  });
-}
-
-// Intentar en load
-document.addEventListener('DOMContentLoaded', ()=> {
-  // intentar reproducir después de un pequeño delay
-  setTimeout(tryPlayAudio, 250);
-});
-
-/* GALLERY: carrusel simple */
-const track = document.getElementById('track');
-const prev = document.getElementById('prev');
-const next = document.getElementById('next');
-let index = 0;
-
-function updateGallery(){
-  const width = track.children[0].clientWidth;
-  const maxIndex = track.children.length - 1;
-  index = Math.max(0, Math.min(index, maxIndex));
-  track.style.transform = `translateX(${-index * width}px)`;
-}
-if(prev) prev.addEventListener('click', ()=> { index = Math.max(0, index-1); updateGallery(); });
-if(next) next.addEventListener('click', ()=> { index = Math.min(track.children.length-1, index+1); updateGallery(); });
-window.addEventListener('resize', updateGallery);
-
-/* COUNTDOWN: 6 Dic 2025 17:00 */
-function updateCountdown(){
-  const target = new Date('2025-12-06T17:00:00').getTime();
-  const now = Date.now();
-  const diff = target - now;
-  const block = document.getElementById('countBlock');
-  if(!block) return;
-  if(diff <= 0){ block.textContent = '¡Hoy es el gran día!'; return; }
-  const days = Math.floor(diff / (1000*60*60*24));
-  const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-  const mins = Math.floor((diff % (1000*60*60)) / (1000*60));
-  const secs = Math.floor((diff % (1000*60)) / 1000);
-  block.textContent = `${days} días • ${hours}h ${mins}m ${secs}s`;
-}
-setInterval(updateCountdown, 1000);
-updateCountdown();
-
-/* PERSONALIZACIÓN POR URL */
-function qParam(name){
-  const p = new URLSearchParams(window.location.search);
-  return p.get(name) || '';
-}
-function renderPersonal(){
-  const name = qParam('nombre');
-  const adultos = qParam('adultos');
-  const ninos = qParam('ninos');
-  const box = document.getElementById('personalBox');
-  if(!box) return;
-  if(!name && !adultos && !ninos){ box.style.display='none'; return; }
-  let txt = `Invitación para ${name || 'usted'}.`;
-  const partes = [];
-  if(adultos) partes.push(`${adultos} adulto${adultos === '1' ? '' : 's'}`);
-  if(ninos) partes.push(`${ninos} niño${ninos === '1' ? '' : 's'}`);
-  if(partes.length) txt += ' Invitados: ' + partes.join(' y ') + '.';
-  box.innerHTML = txt;
-  box.style.display = 'block';
-}
-renderPersonal();
-
-/* Mejora: si el archivo raw github requiere tiempo, audio puede fallar por CORS -> fallback visible
-   Nota: si usas Google Drive, asegúrate "Cualquiera con el enlace" y usa https://drive.google.com/uc?export=download&id=ID
-*/
-
-/* Accessibility: ensure focus styles on buttons (simple) */
-document.addEventListener('focusin', (e)=> {
-  if(e.target && (e.target.matches('button') || e.target.matches('a'))) e.target.style.outline = '3px solid rgba(151,169,124,0.25)';
-});
-document.addEventListener('focusout', (e)=> {
-  if(e.target && (e.target.matches('button') || e.target.matches('a'))) e.target.style.outline = 'none';
-});
+  // Simple gallery scroll
+  const galleryTrack = document.getElementById('galleryTrack');
+  function scrollGallery(dir) {
+    galleryTrack.scrollBy({ left: dir * 280, behavior: 'smooth' });
+  }
 </script>
+
 </body>
 </html>
