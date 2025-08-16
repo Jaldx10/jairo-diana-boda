@@ -119,6 +119,16 @@
   .invite .date { font-weight:600; color:var(--verde-oliva); font-size:2rem }
 
   /* --- COUNTDOWN --- */
+ /* Texto encima del countdown */
+.countdown-title {
+  font-family: 'Cormorant Garamond', serif; /* igual que "Nuestra boda" */
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+  color: #333; /* mismo tono elegante */
+  margin-bottom: 15px; /* espacio con el contador */
+}
+
   .countdown {
     margin:24px auto;
     font-weight:900;
@@ -150,14 +160,32 @@
   .loc-map iframe { width:100%; height:220px; border:0; display:block }
 
   /* --- AGENDA --- */
-  .agenda {
-    background:white; border-radius:12px; padding:16px 20px; box-shadow:0 8px 22px rgba(0,0,0,0.06); margin:16px 0
-  }
-  .agenda h5{ margin:0 0 18px 0; color:var(--verde-claro); text-align:center; font-weight:700; font-size:1.4rem }
-  .agenda ul{ list-style:none; padding:0; margin:0 }
-  .agenda li{ display:flex; gap:14px; align-items:center; padding:12px 8px; border-bottom:1px solid rgba(0,0,0,0.05); font-weight:600; font-size:1rem; color:var(--verde-oliva) }
-  .agenda .time{ font-weight:900; width:78px; user-select:none }
-  .icon{ width:24px; height:24px; flex-shrink:0; fill:var(--verde-oliva) }
+  
+ .agenda-section {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #fafafa; /* puedes ajustar el fondo */
+}
+
+.agenda-section .section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.agenda-contenedor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.agenda-img {
+  max-width: 95%;
+  height: auto;
+  border-radius: 12px; /* bordes suaves */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* sombra elegante */
+}
 
   /* --- REGALOS --- */
   .gifts {
@@ -279,17 +307,21 @@
   <div id="personalBox" aria-live="polite" style="display:none"></div>
 
   <!-- 6. COUNTDOWN centrado y más grande -->
+ <section id="countdown-section" class="countdown-section">
+  <h2 class="countdown-title">Solo Faltan:</h2>
+  <div id="countdown"></div>
+</section>
   <div class="countdown fade delay-3" id="countBlock" aria-live="polite" role="timer" aria-atomic="true" aria-label="Cuenta regresiva para la boda">Cargando cuenta regresiva...</div>
 
   <!-- 7. AGENDA -->
-  <section class="agenda fade delay-4" aria-label="Agenda">
-    <h5>Agenda</h5>
-    <ul>
-      <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1a11 11 0 1011 11A11 11 0 0012 1zm0 20a9 9 0 119-9 9 9 0 01-9 9z"/><path d="M13 7h-2v6h6v-2h-4z"/></svg><div class="time">16:00</div><div>Ceremonia en la iglesia</div></li>
-      <li><svg class="icon" viewBox="0 0 24 24"><path d="M3 6h18v2H3zM5 10h14v8H5z"/></svg><div class="time">18:00</div><div>Recepción y banquete</div></li>
-      <li><svg class="icon" viewBox="0 0 24 24"><path d="M12 2l2 5h5l-4 3 2 5-4-3-4 3 2-5-4-3h5z"/></svg><div class="time">21:00</div><div>Baile y celebración</div></li>
-    </ul>
-  </section>
+<section id="agenda" class="agenda-section">
+  <h2 class="section-title">Agenda</h2>
+  
+  <div class="agenda-contenedor">
+    <!-- Aquí insertas tu imagen -->
+    <img src="img/agenda.jpg" alt="Agenda del evento" class="agenda-img">
+  </div>
+</section>
 
   <!-- 8. REGALOS con icono de sobre centrado -->
   <section class="gifts fade delay-4" aria-label="Regalos">
