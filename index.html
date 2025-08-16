@@ -88,17 +88,26 @@
   }
 
   /* --- NUESTROS PADRES --- */
-  .parents {
-    margin:14px 0 16px;
-    text-align:center;
-  }
-  .parents h3 {
-    font-weight:600;
-    font-size:1.3rem;
-    margin-bottom: 12px;
-    color: var(--verde-claro);
-    font-style: italic;
-  }
+  /* Sección Nuestros Padres */
+.padres-section {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #fdfdfd; /* puedes ajustar según tu paleta */
+}
+
+.padres-contenedor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.padres-img {
+  max-width: 90%;
+  height: auto;
+  border-radius: 12px; /* esquinas suaves */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* sombra classy */
+}
+
 
   /* --- INVITACIÓN (título grande) --- */
   .invite {
@@ -252,19 +261,13 @@
 </section>
 
   <!-- 4. NUESTROS PADRES reorganizado -->
-  <section class="parents fade delay-3" aria-label="Nuestros padres">
-    <h3>Con la bendición de nuestros padres</h3>
-    <div class="parent-cards">
-      <div class="parent-card" aria-labelledby="pad1">
-        <h4 id="pad1">Lilian Elizabeth Arce</h4>
-        <p>Luis René Velásquez</p>
-      </div>
-      <div class="parent-card" aria-labelledby="pad2">
-        <h4 id="pad2">Deisy Marina de González</h4>
-        <p>Herbert González</p>
-      </div>
-    </div>
-  </section>
+  <section id="padres" class="padres-section">
+  
+  <div class="padres-contenedor">
+    <!-- Aquí subes tu imagen a /img y la enlazas -->
+    <img src="img/padres.jpg" alt="Nuestros padres" class="padres-img">
+  </div>
+</section>
 
   <!-- 5. INVITACIÓN (texto principal) -->
   <section class="invite fade delay-3" aria-label="Invitación">
