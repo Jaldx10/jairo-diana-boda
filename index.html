@@ -38,6 +38,49 @@
   .fade.delay-4{ animation-delay:0.75s }
   @keyframes fadeIn{ to { opacity:1; transform:none } }
 
+ /* Pantalla Preview */
+.preview-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #faf7f2; /* tono beige claro de la paleta */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 9999; /* encima de todo */
+}
+
+.preview-content h1 {
+  font-family: 'Great Vibes', cursive; /* misma fuente elegante */
+  font-size: 2.2em;
+  color: #8b6f47; /* dorado/marrón de la paleta */
+  margin-bottom: 10px;
+}
+
+.preview-content p {
+  font-size: 1.2em;
+  color: #444;
+  margin-bottom: 25px;
+}
+
+.enter-btn {
+  background-color: #8b6f47; /* dorado/marrón */
+  color: #fff;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.enter-btn:hover {
+  background-color: #a2855a; /* un poco más claro al hover */
+}
+  
   /* --- MONOGRAMA CENTRADO --- */
  .hero {
   display: flex;
@@ -143,6 +186,15 @@
     user-select:none;
   }
 
+  /* Iconos con imágenes en Regalos y Ubicaciones */
+.gifts-icon,
+.location-icon {
+  display: block;
+  margin: 0 auto 15px auto; /* centrado y separación abajo */
+  max-width: 80px; /* tamaño moderado, ajustable */
+  height: auto;
+}
+  
   /* --- UBICACIONES (ceremonia + recepción) */
   .locations {
     display:grid; grid-template-columns:1fr; gap:24px; margin:22px 0;
@@ -211,19 +263,28 @@
   .story .list { display:flex; gap:14px; overflow-x:auto; padding:10px 6px; -webkit-overflow-scrolling:touch; scroll-behavior:smooth }
   .story .item { min-width:150px; background:var(--crema); padding:12px; border-radius:10px; text-align:center; font-weight:600; font-size:0.95rem }
 
-  /* --- CÓDIGO VESTIMENTA & ICONOS --- */
-  .small-card { background:white; border-radius:12px; padding:16px 18px; box-shadow:0 8px 22px rgba(0,0,0,0.06); margin:18px 0; text-align:center; font-weight:700; color:var(--verde-oliva) }
-  .dress-icons {
-    margin-top:12px;
-    display:flex;
-    justify-content:center;
-    gap:48px;
-  }
-  .dress-icons svg {
-    width: 68px;
-    height: 68px;
-    fill: var(--verde-oliva);
-  }
+ /* Sección Código de Vestimenta */
+.dresscode-section {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.dresscode-content {
+  margin: 30px 0;
+}
+
+.dress-icon {
+  display: block;
+  margin: 0 auto;
+  max-width: 200px; /* Ajusta según tamaño de la imagen */
+  height: auto;
+}
+
+.dress-note {
+  font-style: italic;
+  margin-top: 20px;
+  font-size: 1.1em;
+}
 
   /* --- MENSAJE PERSONALIZADO --- */
   #personalBox { margin:18px auto; max-width:560px; background:rgba(213,228,183,0.8); border:1.2px solid var(--verde-claro); padding:12px 14px; border-radius:12px; font-weight:800; text-align:center }
@@ -240,6 +301,15 @@
 <body>
 <main>
 
+  <!-- Pantalla Preview -->
+<div id="preview-screen" class="preview-screen">
+  <div class="preview-content">
+    <h1>Están cordialmente invitados</h1>
+    <p>Acompáñanos a celebrar nuestra boda</p>
+    <button id="enter-btn" class="enter-btn">Acceder</button>
+  </div>
+</div>
+  
   <!-- 1. PORTADA: monograma centrado en línea y animado -->
   <section class="hero fade" aria-label="Monograma">
   <div class="hero-content">
@@ -254,38 +324,21 @@
 
   <!-- 3. NUESTRA CANCIÓN (audio autoplay sin botón) -->
  <section class="audio-section fade delay-2" aria-label="Nuestra canción">
-  <h3 class="audio-title">Nuestra canción</h3>
-  <div class="audio-player" aria-hidden="false">
     <audio id="audio" src="https://github.com/Jaldx10/jairo-diana-boda/raw/refs/heads/main/Bruno-Major-Nothing-Lyric-Chord.MP3" preload="auto" playsinline muted loop></audio>
-    <button id="enableAudioBtn" style="margin-top:8px; padding:6px 12px; font-size:1rem; cursor:pointer; display:none;">Activar sonido</button>
   </div>
 
   <script>
-    const audio = document.getElementById('audio');
-    const enableBtn = document.getElementById('enableAudioBtn');
+  document.addEventListener("DOMContentLoaded", function () {
+    const enterBtn = document.getElementById("enter-btn");
+    const previewScreen = document.getElementById("preview-screen");
+    const audio = document.getElementById("bg-music"); // tu etiqueta <audio>
 
-    window.addEventListener('load', () => {
-      // Intentamos reproducir silenciado (muted)
-      audio.play().catch(() => {
-        // Si falla, mostramos botón para activar sonido
-        enableBtn.style.display = 'inline-block';
-      });
+    enterBtn.addEventListener("click", () => {
+      audio.play(); // empieza la canción
+      previewScreen.style.display = "none"; // oculta preview
     });
-
-    enableBtn.addEventListener('click', () => {
-      // Quitamos mute y reproducimos con sonido al hacer clic
-      audio.muted = false;
-      audio.play();
-      enableBtn.style.display = 'none';
-    });
-
-    // Opcional: si el audio se reproduce automáticamente sin problema, quitamos el botón
-    audio.onplay = () => {
-      if (!audio.muted) {
-        enableBtn.style.display = 'none';
-      }
-    };
-  </script>
+  });
+</script>
 </section>
 
   <!-- 4. NUESTROS PADRES reorganizado -->
@@ -324,61 +377,41 @@
 </section>
 
   <!-- 8. REGALOS con icono de sobre centrado -->
-  <section class="gifts fade delay-4" aria-label="Regalos">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" role="img" aria-label="Icono de sobre">
-      <path d="M2 6a2 2 0 012-2h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6zm2 0l8 5 8-5H4zm16 12V8l-8 5-8-5v10h16z"/>
-    </svg>
-    <p>Si deseas apoyarnos con un regalo, puedes contactarnos directamente o enviar tus buenos deseos.</p>
-  </section>
+  <section id="gifts" class="gifts-section">
+  <div class="gifts-content">
+    <!-- Imagen en vez de icono -->
+    <img src="https://github.com/Jaldx10/jairo-diana-boda/raw/refs/heads/main/Envelope%20Image" alt="Icono Regalos" class="gifts-icon">
+    <p>Se agradecerán mucho las muestras de cariño en regalo de sobre.</p>
+  </div>
+</section>
 
   <!-- 9. UBICACIONES con iconos grandes centrados y ordenados -->
   <section class="locations fade delay-4" aria-label="Ubicaciones">
     <!-- Iglesia -->
-    <div class="loc-card" aria-labelledby="loc1">
-      <div class="loc-icon" aria-hidden="true">
-        <!-- Icono iglesia -->
-        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--verde-oliva)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-          <path d="M2 17h20v5H2z"/>
-          <path d="M12 12v5"/>
-        </svg>
-      </div>
-      <h3 class="loc-title" id="loc1">Parroquia Santa María</h3>
-      <p class="loc-sub">Av. Central #123, San Salvador, El Salvador</p>
-      <div class="loc-map">
-        <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3879.098330558527!2d-89.20313208465814!3d13.69294099035516!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f6338f1a5a85f9b%3A0x4d297c9c81fcb4f9!2sParroquia%20Santa%20Mar%C3%ADa!5e0!3m2!1ses!2ssv!4v1691678400000!5m2!1ses!2ssv" 
-          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" 
-          title="Mapa de Parroquia Santa María"></iframe>
-      </div>
-    </div>
+    <div class="event-location">
+  <!-- Imagen en vez de icono -->
+  <img src="https://github.com/Jaldx10/jairo-diana-boda/raw/refs/heads/main/Church%20Picture" alt="Icono Iglesia" class="location-icon">
+  <h3>Parroquia Nuestra Señora de Santa Ana</h3>
+  <p>7 Calle Oriente entre Avenida Independencia Sur y 3 Avenida Sur, Callejuela El Carmen, Santa Ana, Ciudad</p>
+  <iframe src="https://maps.app.goo.gl/6SMBTnXw8uh7HnLA7" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+</div>
 
     <!-- Recepción -->
-    <div class="loc-card" aria-labelledby="loc2">
-      <div class="loc-icon" aria-hidden="true">
-        <!-- Icono recepción (ejemplo: copa de brindis) -->
-        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--verde-oliva)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M4 21h16M12 3v18M6 12h12M9 6h6"/>
-        </svg>
-      </div>
-      <h3 class="loc-title" id="loc2">Salón La Esperanza</h3>
-      <p class="loc-sub">Calle Los Pinos #456, San Salvador, El Salvador</p>
-      <div class="loc-map">
-        <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3879.218233844218!2d-89.2123452846579!3d13.69804509034419!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f6337c6a9d178bb%3A0x927c5c3c1b4b1b6b!2sSal%C3%B3n%20La%20Esperanza!5e0!3m2!1ses!2ssv!4v1691678600000!5m2!1ses!2ssv" 
-          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" 
-          title="Mapa de Salón La Esperanza"></iframe>
-      </div>
-    </div>
-  </section>
+    <div class="event-location">
+  <!-- Imagen en vez de icono -->
+  <img src="https://github.com/Jaldx10/jairo-diana-boda/raw/refs/heads/main/Recepcion%20Image" alt="Icono Recepción" class="location-icon">
+  <h3>San Antonio Hotel-Boutique</h3>
+  <p>Carretera de Santa Ana a Sonsonate Km. 74.3, Las Cruces, Santa Ana</p>
+  <iframe src="https://maps.app.goo.gl/chWQwccboyMDta7W8" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+</div>
 
   <!-- 10. GALERÍA (opcional) -->
   <section class="gallery fade delay-4" aria-label="Galería de fotos">
     <div class="wrap">
       <div class="track" id="galleryTrack">
-        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Foto de momentos" />
-        <img src="https://images.unsplash.com/photo-1516910817561-18dcbf7eea41?auto=format&fit=crop&w=600&q=80" alt="Foto de momentos" />
-        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80" alt="Foto de momentos" />
+        <img src="https://github.com/Jaldx10/jairo-diana-boda/raw/refs/heads/main/Carrousel%20Image%201" alt="Foto de momentos" />
+        <img src="https://github.com/Jaldx10/jairo-diana-boda/raw/refs/heads/main/Carrousel%20Image%202" alt="Foto de momentos" />
+        <img src="https://github.com/Jaldx10/jairo-diana-boda/raw/refs/heads/main/Carrousel%20Image%203" alt="Foto de momentos" />
       </div>
     </div>
     <div class="controls">
@@ -399,22 +432,14 @@
   </section>
 
   <!-- 12. CÓDIGO DE VESTIMENTA con iconos grandes centrados -->
-  <section class="small-card fade delay-4" aria-label="Código de vestimenta">
-    <p style="font-weight:900; font-size:1.3rem; margin-bottom:12px;">Código de vestimenta</p>
-    <div class="dress-icons" role="img" aria-label="Iconos de traje y vestido formal">
-      <!-- Icono traje -->
-      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <path d="M4 22v-7l4-4-1-6 4 3 4-3-1 6 4 4v7H4z" />
-      </svg>
-      <!-- Icono vestido -->
-      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <path d="M16 2a4 4 0 00-8 0v5H4v3l4 3-1 6h10l-1-6 4-3V7h-4V2z" />
-      </svg>
-    </div>
-    <p style="margin-top:12px; font-weight:600; font-size:1rem;">
-      Formal: traje para los caballeros y vestido elegante para las damas.
-    </p>
-  </section>
+<!-- Sección Código de Vestimenta -->
+<section id="dresscode" class="dresscode-section">
+  <h2>Código de vestimenta</h2>
+  <div class="dresscode-content">
+    <img src="https://github.com/Jaldx10/jairo-diana-boda/raw/refs/heads/main/Dress%20Code%20Image" alt="Dresscode" class="dress-icon">
+  </div>
+  <p class="dress-note">Formal / Etiqueta. ¡Esperamos verlos radiantes!</p>
+</section>
 
 </main>
 
