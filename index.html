@@ -39,34 +39,26 @@
   @keyframes fadeIn{ to { opacity:1; transform:none } }
 
   /* --- MONOGRAMA CENTRADO --- */
-  header.monograma {
-    display:flex; justify-content:center; align-items:center;
-    padding:12px 0 6px;
-  }
-  .monograma-box {
-    display:flex; align-items:center; gap:6px;
-    background:linear-gradient(180deg, rgba(151,169,124,0.09), rgba(39,53,38,0.03));
-    border:2px solid rgba(39,53,38,0.06);
-    box-shadow:0 8px 26px rgba(0,0,0,0.08);
-    border-radius:24px;
-    padding: 10px 24px;
-  }
-  .monograma-text {
-    font-family:'Great Vibes', cursive;
-    font-size:56px;
-    color:var(--verde-oliva);
-    animation:monogramPop 0.9s cubic-bezier(.2,.8,.2,1) forwards;
-    opacity:0;
-    user-select:none;
-  }
-  .monograma-text:nth-child(2) {
-    font-size:56px;
-  }
-  @keyframes monogramPop {
-    0% { transform:scale(0.7) rotate(-6deg); opacity:0 }
-    60% { transform:scale(1.06) rotate(2deg); opacity:1 }
-    100% { transform:scale(1) rotate(0deg); opacity:1 }
-  }
+ .hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh; /* altura mínima, ajusta según prefieras */
+  text-align: center;
+  padding: 20px;
+}
+
+.monograma-img {
+  max-width: 250px;   /* controla el ancho máximo */
+  width: 100%;        /* se ajusta al tamaño del contenedor */
+  height: auto;       /* mantiene proporción */
+  animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
 
   /* --- IMAGEN PRINCIPAL (cuadrada, responsive) --- */
   .hero-img {
@@ -226,13 +218,11 @@
 <main>
 
   <!-- 1. PORTADA: monograma centrado en línea y animado -->
-  <header class="monograma fade delay-1" role="banner" aria-label="Monograma">
-    <div class="monograma-box" aria-hidden="true">
-      <div class="monograma-text" style="animation-delay:0s">J</div>
-      <div class="monograma-text" style="animation-delay:0.2s">&amp;</div>
-      <div class="monograma-text" style="animation-delay:0.4s">D</div>
-    </div>
-  </header>
+  <section class="hero fade" aria-label="Monograma">
+  <div class="hero-content">
+    <img src="img/monograma.png" alt="Monograma de la boda" class="monograma-img">
+  </div>
+</section>
 
   <!-- 2. IMAGEN PRINCIPAL (cuadrada) -->
   <section class="hero-img fade delay-1" aria-label="Imagen principal">
