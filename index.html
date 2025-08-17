@@ -295,34 +295,7 @@
     font-weight: 700;
     font-size: 1rem;
   }
-  
-  /* --- NUESTRO CAMINO --- */
-  .story {
-    background: white;
-    padding: 1rem;
-    border-radius: 14px;
-    box-shadow: 0 8px 22px var(--sombra-suave);
-  }
-  .story .list {
-    display: flex;
-    gap: 14px;
-    overflow-x: auto;
-    padding: 10px 4px;
-    -webkit-overflow-scrolling: touch;
-    scroll-behavior: smooth;
-    scrollbar-width: none; /* Firefox */
-  }
-  .story .list::-webkit-scrollbar { display: none; /* Chrome, Safari */ }
-  .story .item {
-    min-width: 160px;
-    background: var(--crema);
-    padding: 12px;
-    border-radius: 10px;
-    text-align: center;
-    font-weight: 600;
-    font-size: 0.95rem;
-    flex-shrink: 0;
-  }
+
   
   /* --- CÓDIGO DE VESTIMENTA --- */
   .dresscode-title {
@@ -341,6 +314,16 @@
     margin-top: 1rem;
     font-size: clamp(1rem, 4vw, 1.1rem);
   }
+  
+   /* --- Confirmación de asistencia --- */
+
+  <section id="rsvp" class="fade delay-4">
+  <h2 class="dresscode-title">Confirma tu Asistencia</h2>
+  <p class="dress-note" style="margin-bottom: 1.5rem;">Tu presencia es nuestro mayor regalo. Por favor, ayúdanos a planificar confirmando antes del 20 de noviembre de 2025.</p>
+  <a href="https://forms.gle/AyZVRChMjp5HYCiP7" target="_blank" class="enter-btn" style="text-decoration: none;">
+    Confirmar Asistencia (RSVP)
+  </a>
+</section>
   
   /* --- RESPONSIVE PARA DESKTOP --- */
   @media(min-width: 780px) {
@@ -410,18 +393,20 @@
   <section class="locations fade delay-4" aria-label="Ubicaciones">
     <div class="loc-card">
       <img src="https://github.com/Jaldx10/jairo-diana-boda/raw/refs/heads/main/Church%20Picture" alt="Icono Iglesia" class="location-icon">
-      <h3 class="loc-title">Parroquia Nuestra Señora de Santa Ana</h3>
+      <h3 class="loc-title">Parroquia Nuestra Señora del Carmen </h3>
       <p class="loc-sub">7 Calle Oriente entre Avenida Independencia Sur y 3 Avenida Sur, Callejuela El Carmen, Santa Ana</p>
-      <div class="loc-map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3870.076326090562!2d-89.55909362573297!3d13.99351058634882!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f62c5b36952c42b%3A0x6e768e7f80f97121!2sParroquia%20Nuestra%20Se%C3%B1ora%20de%20Santa%20Ana!5e0!3m2!1ses-419!2ssv!4v1723841126359!5m2!1ses-419!2ssv" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="map-buttons" style="margin-bottom: 1rem; display: flex; gap: 10px; justify-content: center;">
+        <a href="https://maps.app.goo.gl/5TCURMp7RKfAtbBj6?g_st=aw" target="_blank" class="btn">Abrir en Google Maps</a>
+        <a href="https://waze.com/ul/hd42rd54dm" target="_blank" class="btn">Abrir en Waze</a>
       </div>
     </div>
     <div class="loc-card">
       <img src="https://github.com/Jaldx10/jairo-diana-boda/raw/refs/heads/main/Recepcion%20Image" alt="Icono Recepción" class="location-icon">
       <h3 class="loc-title">San Antonio Hotel-Boutique</h3>
       <p class="loc-sub">Carretera de Santa Ana a Sonsonate Km. 74.3, Las Cruces, Santa Ana</p>
-      <div class="loc-map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3871.214644781987!2d-89.6015694257343!3d13.923886788574765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f62c3e1e5509e53%3A0xe54d603a11685cd!2sSan%20Antonio%20Hotel%20Boutique!5e0!3m2!1ses-419!2ssv!4v1723841183177!5m2!1ses-419!2ssv" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="map-buttons" style="margin-bottom: 1rem; display: flex; gap: 10px; justify-content: center;">
+        <a href="https://maps.app.goo.gl/FDP7VwnPSDUEaAnw6?g_st=aw" target="_blank" class="btn">Abrir en Google Maps</a>
+        <a href="https://waze.com/ul/hd42ppuuj3" target="_blank" class="btn">Abrir en Waze</a>
       </div>
     </div>
   </section>
@@ -434,27 +419,26 @@
         <img src="https://github.com/Jaldx10/jairo-diana-boda/raw/refs/heads/main/Carrousel%20Image%203" alt="Foto de momentos" />
       </div>
     </div>
-    <div class="controls">
-      <button class="btn" aria-label="Foto anterior" onclick="scrollGallery(-1)">‹</button>
-      <button class="btn" aria-label="Foto siguiente" onclick="scrollGallery(1)">›</button>
+        <div class="controls">
+      <button id="prevBtn" class="btn" aria-label="Foto anterior">‹</button>
+      <button id="nextBtn" class="btn" aria-label="Foto siguiente">›</button>
     </div>
   </section>
 
-  <section class="story fade delay-4" aria-label="Nuestro camino">
-    <div class="list" tabindex="0" aria-roledescription="carousel" aria-label="Historia de la pareja">
-      <div class="item">Nos conocimos en la universidad</div>
-      <div class="item">Primer viaje juntos a la playa</div>
-      <div class="item">Compromiso en diciembre</div>
-      <div class="item">Preparativos para la boda</div>
-      <div class="item">¡Esperamos verte allí!</div>
-    </div>
-  </section>
-
-  <section id="dresscode" class="fade delay-4">
+    <section id="dresscode" class="fade delay-4">
     <h2 class="dresscode-title">Código de Vestimenta</h2>
     <img src="https://github.com/Jaldx10/jairo-diana-boda/raw/refs/heads/main/Dress%20Code%20Image" alt="Icono Código de vestimenta" class="dress-icon">
     <p class="dress-note">Formal / Etiqueta. ¡Esperamos verlos radiantes!</p>
-  </section>
+    
+    <p style="margin-top: 1.5rem; font-weight: 600; color: var(--verde-oliva);">Sugerimos inspirarse en la siguiente paleta de colores:</p>
+    <div class="color-palette" style="display: flex; justify-content: center; gap: 15px; margin-top: 1rem;">
+      <div title="Verde Oliva" style="width: 45px; height: 45px; background-color: #273526; border-radius: 50%; border: 2px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"></div>
+      <div title="Verde Claro" style="width: 45px; height: 45px; background-color: #97A97C; border-radius: 50%; border: 2px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"></div>
+      <div title="Beige/Arena" style="width: 45px; height: 45px; background-color: #D4CFC2; border-radius: 50%; border: 2px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"></div>
+      <div title="Dorado Suave" style="width: 45px; height: 45px; background-color: #BDB76B; border-radius: 50%; border: 2px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"></div>
+      <div title="Terracota" style="width: 45px; height: 45px; background-color: #A97C6F; border-radius: 50%; border: 2px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"></div>
+    </div>
+    </section>
 
 </main>
 
@@ -465,13 +449,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const btn = document.getElementById('enter-btn');
   const audio = document.getElementById('bg-music');
 
-  if (audio) audio.volume = 0.8; // Volumen inicial más suave
+  if (audio) audio.volume = 0.8; 
 
   btn.addEventListener('click', async () => {
     try {
       if (audio) {
-        // En móviles, el 'play' debe ser iniciado por el usuario.
-        // El atributo 'controls' permite que lo inicien si el autoplay falla.
         await audio.play();
       }
     } catch (err) {
@@ -480,59 +462,71 @@ document.addEventListener('DOMContentLoaded', () => {
       preview.classList.add('hidden');
       document.body.classList.remove('preview-open');
       setTimeout(() => {
-        preview.style.display = 'none'; // Ocultar por completo para no interferir
+        preview.style.display = 'none'; 
       }, 400);
     }
   });
 
   // --- Script de cuenta regresiva ---
   const countBlock = document.getElementById('countBlock');
-  const eventDate = new Date('2025-12-06T16:00:00');
+  if (countBlock) {
+    const eventDate = new Date('2025-12-06T16:00:00');
 
-  const updateCountdown = () => {
-    const now = new Date();
-    let diff = eventDate - now;
+    const updateCountdown = () => {
+      const now = new Date();
+      let diff = eventDate - now;
 
-    if (diff <= 0) {
-      countBlock.textContent = "¡Llegó el día!";
-      clearInterval(countdownInterval);
-      return;
+      if (diff <= 0) {
+        countBlock.textContent = "¡Llegó el día!";
+        clearInterval(countdownInterval);
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      diff -= days * (1000 * 60 * 60 * 24);
+      const hours = Math.floor(diff / (1000 * 60 * 60));
+      diff -= hours * (1000 * 60 * 60);
+      const minutes = Math.floor(diff / (1000 * 60));
+      diff -= minutes * (1000 * 60);
+      const seconds = Math.floor(diff / 1000);
+
+      countBlock.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
     }
-
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    diff -= days * (1000 * 60 * 60 * 24);
-    const hours = Math.floor(diff / (1000 * 60 * 60));
-    diff -= hours * (1000 * 60 * 60);
-    const minutes = Math.floor(diff / (1000 * 60));
-    diff -= minutes * (1000 * 60);
-    const seconds = Math.floor(diff / 1000);
-
-    countBlock.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    
+    const countdownInterval = setInterval(updateCountdown, 1000);
+    updateCountdown(); 
   }
-  
-  const countdownInterval = setInterval(updateCountdown, 1000);
-  updateCountdown(); // Llamada inicial
 
-  // --- Script de galería ---
+  // --- SCRIPT DE GALERÍA CORREGIDO ---
   const galleryTrack = document.getElementById('galleryTrack');
-  const images = galleryTrack.querySelectorAll('img');
-  let currentIndex = 0;
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  
+  // Verificamos que los elementos existan antes de continuar
+  if (galleryTrack && prevBtn && nextBtn) {
+    const images = galleryTrack.querySelectorAll('img');
+    let currentIndex = 0;
+    const totalImages = images.length;
 
-  window.scrollGallery = (dir) => {
-    currentIndex += dir;
-    
-    // Bucle infinito
-    if (currentIndex < 0) {
-      currentIndex = images.length - 1;
-    } else if (currentIndex >= images.length) {
-      currentIndex = 0;
-    }
-    
-    const scrollAmount = galleryTrack.clientWidth * currentIndex;
-    galleryTrack.scrollTo({
-      left: scrollAmount,
-      behavior: 'smooth'
+    const updateGalleryPosition = () => {
+      // Usamos el ancho del contenedor visible (.wrap) para el cálculo
+      const itemWidth = galleryTrack.parentElement.clientWidth;
+      const newTransform = -currentIndex * itemWidth;
+      galleryTrack.style.transform = `translateX(${newTransform}px)`;
+    };
+
+    nextBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % totalImages; // El % crea un bucle infinito
+      updateGalleryPosition();
     });
+
+    prevBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + totalImages) % totalImages; // Bucle infinito hacia atrás
+      updateGalleryPosition();
+    });
+    
+    // Ajustar en caso de que cambie el tamaño de la ventana
+    window.addEventListener('resize', updateGalleryPosition);
   }
 });
 </script>
