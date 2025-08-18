@@ -354,7 +354,7 @@
   <section class="hero fade" aria-label="Monograma">
     <img src="https://github.com/Jaldx10/jairo-diana-boda/raw/refs/heads/main/Header" alt="Monograma de la boda" class="monograma-img">
   </section>
-
+ <div id="personalBox" class="fade delay-1" aria-live="polite" style="display:none"></div>
   <section class="hero-img fade delay-1" aria-label="Imagen principal">
     <img src="https://github.com/Jaldx10/jairo-diana-boda/raw/refs/heads/main/Main%20Picture" alt="Foto de Jairo y Diana" />
   </section>
@@ -539,6 +539,47 @@ document.addEventListener('DOMContentLoaded', () => {
     // Ajustar en caso de que cambie el tamaño de la ventana
     window.addEventListener('resize', updateGalleryPosition);
   }
+ // --- SCRIPT PARA MENSAJE PERSONALIZADO ---
+      const params = new URLSearchParams(window.location.search);
+      const invitado = params.get('invitado');
+      const adultos = params.get('adultos');
+      const ninos = params.get('ninos');
+      const personalBox = document.getElementById('personalBox');
+
+      if (invitado && personalBox) {
+        // Decodificar el nombre para mostrar espacios correctamente
+        const nombreInvitado = decodeURIComponent(invitado.replace(/\+/g, ' '));
+        let totalPases = 0;
+        let mensajePases = "";
+
+        // Calcular el total de pases sumando adultos y niños
+        if (adultos && !isNaN(parseInt(adultos))) {
+            totalPases += parseInt(adultos);
+        }
+        if (ninos && !isNaN(parseInt(ninos))) {
+            totalPases += parseInt(ninos);
+        }
+
+        // Crear el mensaje de pases (singular o plural)
+        if (totalPases > 0) {
+            if (totalPases === 1) {
+                mensajePases = "Tienes <strong>1 pase reservado</strong> para nuestro gran día.";
+            } else {
+                mensajePases = `Tienes <strong>${totalPases} pases reservados</strong> para nuestro gran día.`;
+            }
+        }
+        
+        // Unir todo en el mensaje final
+        const mensajeFinal = `¡Hola, <strong>${nombreInvitado}</strong>! Estamos muy felices de invitarte.<br>${mensajePases}`;
+
+        // Mostrar el mensaje en la caja
+        personalBox.innerHTML = mensajeFinal;
+        personalBox.style.display = 'block';
+      }
+
+    }); // <-- Asegúrate de pegarlo ANTES de esta línea
+</script>
+  
 });
 </script>
 
